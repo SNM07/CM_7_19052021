@@ -32,6 +32,14 @@
       }
     }
   }
+  & #searchFilters{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 90vw;
+      margin: 2vw auto 2vw auto;
+      gap: 1.5rem;
+  }
 }
 
 input[type="search"]::-webkit-search-decoration,
