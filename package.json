@@ -1,0 +1,20 @@
+{
+  "name": "cm_7_19052021",
+  "version": "1.0.0",
+  "description": "Les petits plats - Développez un algorithme de recherche en JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./css/style.css --style expanded",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SNM07/CM_7_19052021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SNM07/CM_7_19052021/issues"
+  },
+  "homepage": "https://github.com/SNM07/CM_7_19052021#readme"
+}
