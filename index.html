@@ -12,66 +12,73 @@
     ></script>
   </head>
   <body>
-    <header>
-      <a id="logoContainer" href="./">
-        <img id="logo" src="./images/Les_petits_plats-logo.png" />
-      </a>
-    </header>
-    <nav>
-      <div id="searchBarContainer">
-        <input type="search" id="site-search" />
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-      <div id="searchFilters">
-        <div id="ingredients">
-          <label
-            id="inputTrigger--name"
-            class="inputTrigger"
-            data-status="close"
-          >
-            <input type="text" placeholder="Nom de la recette"
-            class="color--name"">
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-chevron-up elHidden"></i>
-            <ul>
-              <li>Element de liste</li>
-            </ul>
-          </label>
+    <main id="pageMain">
+      <header>
+        <a id="logoContainer" href="./">
+          <img id="logo" src="./images/Les_petits_plats-logo.png" />
+        </a>
+      </header>
+      <nav>
+        <form id="searchBarContainer">
+          <input
+            type="search"
+            id="site-search"
+            placeholder="  Rechercher un ingrédient, appareil, ustensile ou recette"
+            onfocus="this.placeholder = ''"
+          />
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+        <div id="searchFilters">
+          <div id="ingredients">
+            <label
+              id="inputTrigger--name"
+              class="inputTrigger"
+              data-status="close"
+            >
+              <input type="text" placeholder="Nom de la recette"
+              class="color--name"">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up elHidden"></i>
+              <ul>
+                <li>Element de liste</li>
+              </ul>
+            </label>
+          </div>
+          <div id="appareil">
+            <label
+              id="inputTrigger--name"
+              class="inputTrigger"
+              data-status="close"
+            >
+              <input type="text" placeholder="Nom de la recette"
+              class="color--name"">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up elHidden"></i>
+              <ul>
+                <li>Element de liste</li>
+              </ul>
+            </label>
+          </div>
+          <div id="ustensiles">
+            <label
+              id="inputTrigger--name"
+              class="inputTrigger"
+              data-status="close"
+            >
+              <input type="text" placeholder="Nom de la recette"
+              class="color--name"">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up elHidden"></i>
+              <ul>
+                <li>Element de liste</li>
+              </ul>
+            </label>
+          </div>
         </div>
-        <div id="appareil">
-          <label
-            id="inputTrigger--name"
-            class="inputTrigger"
-            data-status="close"
-          >
-            <input type="text" placeholder="Nom de la recette"
-            class="color--name"">
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-chevron-up elHidden"></i>
-            <ul>
-              <li>Element de liste</li>
-            </ul>
-          </label>
-        </div>
-        <div id="ustensiles">
-          <label
-            id="inputTrigger--name"
-            class="inputTrigger"
-            data-status="close"
-          >
-            <input type="text" placeholder="Nom de la recette"
-            class="color--name"">
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-chevron-up elHidden"></i>
-            <ul>
-              <li>Element de liste</li>
-            </ul>
-          </label>
-        </div>
-      </div>
-    </nav>
-    <section></section>
+      </nav>
+      <section></section>
+    </main>
   </body>
 </html>

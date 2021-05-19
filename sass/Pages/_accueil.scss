@@ -1,0 +1,42 @@
+#pageMain {
+  & #logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vw;
+    & #logo {
+      width: 25vw;
+    }
+  }
+  & #searchBarContainer {
+    width: 90vw;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    & #site-search {
+      flex-grow: 2;
+      border: none;
+      background-color: lightgray;
+      border-radius: 5px 0 0 5px;
+      font-size: 1.2rem;
+    }
+    & .searchButton {
+      background-color: lightgray;
+      border: none;
+      width: 3rem;
+      border-radius: 0 5px 5px 0;
+      & .fa {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
