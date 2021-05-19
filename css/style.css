@@ -59,6 +59,18 @@
 #pageMain #logoContainer #logo {
   width: 25vw;
 }
+#pageMain #warning {
+  width: 90vw;
+  display: flex;
+  background-color: lightsteelblue;
+  color: darkslategray;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto 1rem auto;
+  padding: 1rem;
+  height: 2.5rem;
+  border-radius: 5px;
+}
 #pageMain #searchBarContainer {
   width: 90vw;
   height: 3rem;
@@ -82,6 +94,32 @@
 }
 #pageMain #searchBarContainer .searchButton .fa {
   font-size: 1.5rem;
+}
+#pageMain #activeFiltersContainer {
+  display: flex;
+  gap: 1rem;
+  width: 90vw;
+  margin: 1rem auto;
+}
+#pageMain #activeFiltersContainer .activeFilter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+}
+#pageMain #activeFiltersContainer .activeFilter.ing {
+  background-color: #3282f7;
+}
+#pageMain #activeFiltersContainer .activeFilter.app {
+  background-color: #68d9a4;
+}
+#pageMain #activeFiltersContainer .activeFilter.ust {
+  background-color: #ed6454;
+}
+#pageMain #activeFiltersContainer .activeFilter .activeFilterText {
+  padding-right: 1rem;
 }
 #pageMain #searchFilters {
   display: flex;

@@ -8,6 +8,18 @@
       width: 25vw;
     }
   }
+  & #warning{
+      width: 90vw;
+      display: flex;
+      background-color: lightsteelblue;
+      color: darkslategray;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem auto 1rem auto;
+      padding: 1rem;
+      height: 2.5rem;
+      border-radius: 5px;
+  }
   & #searchBarContainer {
     width: 90vw;
     height: 3rem;
@@ -31,6 +43,32 @@
         font-size: 1.5rem;
       }
     }
+  }
+  & #activeFiltersContainer{
+      display:flex;
+      gap: 1rem;
+      width: 90vw;
+      margin: 1rem auto;
+      & .activeFilter{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: .5rem 1rem;
+          border-radius: 5px;
+          color: white;
+          &.ing{
+            background-color: $color-ing;  
+          }
+          &.app{
+            background-color: $color-app;  
+          }
+          &.ust{
+            background-color: $color-ust;  
+          }
+          & .activeFilterText{
+              padding-right: 1rem;
+          }
+      }
   }
   & #searchFilters{
       display: flex;
