@@ -19,10 +19,10 @@
         </a>
       </header>
       <div id="warning">
-          <span id="warningText">éléments correspondent à la recherche</span>
-          <i class="far fa-times-circle"></i>
+        <span id="warningText">éléments correspondent à la recherche</span>
+        <i class="far fa-times-circle"></i>
       </div>
-      <nav>
+      <div>
         <form id="searchBarContainer">
           <input
             type="search"
@@ -34,13 +34,14 @@
             <i class="fa fa-search"></i>
           </button>
         </form>
-        <div id="activeFiltersContainer">
+      </div>
+      <div id="activeFiltersContainer">
         <div class="activeFilter ing">
-            <span class="activeFilterText">Rutabaga</span>
-            <i class="far fa-times-circle"></i>
+          <span class="activeFilterText">Rutabaga</span>
+          <i class="far fa-times-circle"></i>
         </div>
-        </div>
-        <nav>
+      </div>
+      <nav id="searchFiltersContainer">
         <div id="searchFilters">
           <div class="filterInput" id="ingredients">
             <label
@@ -48,8 +49,7 @@
               class="inputTrigger"
               data-status="close"
             >
-              <input type="text" placeholder="Ingrédients"
-              class="inputColor">
+              <input type="text" placeholder="Ingrédients" class="inputColor" />
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up hiddenArrow"></i>
               <ul>
@@ -63,8 +63,7 @@
               class="inputTrigger"
               data-status="close"
             >
-              <input type="text" placeholder="Appareil"
-              class="inputColor">
+              <input type="text" placeholder="Appareil" class="inputColor" />
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up hiddenArrow"></i>
               <ul>
@@ -78,8 +77,7 @@
               class="inputTrigger"
               data-status="close"
             >
-              <input type="text" placeholder="Ustensiles"
-              class="inputColor">
+              <input type="text" placeholder="Ustensiles" class="inputColor" />
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up hiddenArrow"></i>
               <ul>
@@ -90,31 +88,49 @@
         </div>
       </nav>
       <section id="cardsContainer">
-<div class="recipeCard">
-    <div class="imageContainer"></div>
-    <div class="recipeInfos">
-        <div class="recipeHeading">
-        <h2 class="recipeName">Limonade de Coco</h2>
-        <div class="recipeTime">
-            <i class="far fa-clock"></i>
-            <span class="recipeTimeSpan">10</span>
+        <div class="recipeCard">
+          <div class="imageContainer"></div>
+          <div class="recipeInfos">
+            <div class="recipeHeading">
+              <h2 class="recipeName">Limonade de Coco</h2>
+              <div class="recipeTime">
+                <i class="far fa-clock"></i>
+                <span class="recipeTimeSpan">10</span>
+              </div>
+            </div>
+            <div class="recipeMain">
+              <div class="recipeIng">
+                <span class="recipeIngName"
+                  >Lait de coco: <span class="recipeIngQuantity">400</span
+                  ><span class="recipeIngMeasure"> ml</span></span
+                >
+                <span class="recipeIngName"
+                  >Jus de citron: <span class="recipeIngQuantity">2</span
+                  ><span class="recipeIngMeasure"></span
+                ></span>
+                <span class="recipeIngName"
+                  >Crème de coco: <span class="recipeIngQuantity">2</span
+                  ><span class="recipeIngMeasure"> cuillères</span></span
+                >
+                <span class="recipeIngName"
+                  >Sucre: <span class="recipeIngQuantity">30</span
+                  ><span class="recipeIngMeasure"> gr</span></span
+                >
+                <span class="recipeIngName"
+                  >Glaçons: <span class="recipeIngQuantity">2</span
+                  ><span class="recipeIngMeasure"></span
+                ></span>
+              </div>
+              <div class="recipeSteps">
+                <p>
+                  Mettre les glaçons à votre goût dans le blender, ajouter le
+                  lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer
+                  jusqu'à avoir la consistence désirée
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-        <div class="recipeMain">
-        <div class="recipeIng">
-            <span class="recipeIngName">Lait de coco<span class="recipeIngQuantity">400</span></span>
-            <span class="recipeIngName">Jus de citron<span class="recipeIngQuantity">2</span></span>
-            <span class="recipeIngName">Crème de coco<span class="recipeIngQuantity">2</span></span>
-            <span class="recipeIngName">Sucre<span class="recipeIngQuantity">30</span></span>
-            <span class="recipeIngName">Glaçons<span class="recipeIngQuantity"></span></span>
-        </div>
-<div class="recipeSteps">
-<p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
-</div>
-        </div>
-    </div>
-</div>
-
       </section>
     </main>
   </body>

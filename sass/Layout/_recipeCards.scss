@@ -1,0 +1,53 @@
+.recipeCard {
+  width: 33vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  & .imageContainer {
+    width: 33vw;
+    height: 14vw;
+    background-color: lightslategray;
+    border-radius: 10px 10px 0 0;
+  }
+  & .recipeInfos {
+    width: 33vw;
+    height: 18vw;
+    background-color: lightgray;
+    border-radius: 0 0 10px 10px;
+    & .recipeHeading {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      margin-bottom: 1vw;
+      & .recipeName {
+        font-size: 1.8vw;
+      }
+      & .recipeTime {
+        font-weight: bold;
+        font-size: 1.8vw;
+      }
+    }
+    & .recipeMain {
+      display: flex;
+      font-size: 1vw;
+      padding: 0 1rem 1rem 1rem;
+      & .recipeIng {
+        display: flex;
+        flex-direction: column;
+        width: 15vw;
+        & .recipeIngName {
+          font-weight: bold;
+          & .recipeIngQuantity {
+            font-weight: normal;
+          }
+          & .recipeIngMeasure {
+            font-weight: normal;
+          }
+        }
+      }
+      & .recipeSteps {
+        width: 50%;
+      }
+    }
+  }
+}

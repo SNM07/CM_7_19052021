@@ -50,6 +50,60 @@
   list-style: none;
 }
 
+.recipeCard {
+  width: 33vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.recipeCard .imageContainer {
+  width: 33vw;
+  height: 14vw;
+  background-color: lightslategray;
+  border-radius: 10px 10px 0 0;
+}
+.recipeCard .recipeInfos {
+  width: 33vw;
+  height: 18vw;
+  background-color: lightgray;
+  border-radius: 0 0 10px 10px;
+}
+.recipeCard .recipeInfos .recipeHeading {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1vw;
+}
+.recipeCard .recipeInfos .recipeHeading .recipeName {
+  font-size: 1.8vw;
+}
+.recipeCard .recipeInfos .recipeHeading .recipeTime {
+  font-weight: bold;
+  font-size: 1.8vw;
+}
+.recipeCard .recipeInfos .recipeMain {
+  display: flex;
+  font-size: 1vw;
+  padding: 0 1rem 1rem 1rem;
+}
+.recipeCard .recipeInfos .recipeMain .recipeIng {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+}
+.recipeCard .recipeInfos .recipeMain .recipeIng .recipeIngName {
+  font-weight: bold;
+}
+.recipeCard .recipeInfos .recipeMain .recipeIng .recipeIngName .recipeIngQuantity {
+  font-weight: normal;
+}
+.recipeCard .recipeInfos .recipeMain .recipeIng .recipeIngName .recipeIngMeasure {
+  font-weight: normal;
+}
+.recipeCard .recipeInfos .recipeMain .recipeSteps {
+  width: 50%;
+}
+
 #pageMain #logoContainer {
   display: flex;
   justify-content: center;
@@ -121,13 +175,19 @@
 #pageMain #activeFiltersContainer .activeFilter .activeFilterText {
   padding-right: 1rem;
 }
-#pageMain #searchFilters {
+#pageMain #searchFiltersContainer {
+  width: 90vw;
+  margin: 2vw auto 2vw auto;
+}
+#pageMain #searchFiltersContainer #searchFilters {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90vw;
-  margin: 2vw auto 2vw auto;
   gap: 1.5rem;
+}
+#pageMain #cardsContainer {
+  width: 90%;
+  margin: auto;
 }
 
 input[type=search]::-webkit-search-decoration,

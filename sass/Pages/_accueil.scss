@@ -70,13 +70,19 @@
           }
       }
   }
+  & #searchFiltersContainer{
+    width: 90vw;
+    margin: 2vw auto 2vw auto;
   & #searchFilters{
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      width: 90vw;
-      margin: 2vw auto 2vw auto;
       gap: 1.5rem;
+  }
+}
+  & #cardsContainer{
+      width: 90%;
+      margin: auto;
   }
 }
 
