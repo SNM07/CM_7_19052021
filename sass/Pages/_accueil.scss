@@ -85,8 +85,17 @@
   }
 }
   & #cardsContainer{
-      width: 90%;
+      width: 91%;
       margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      //flex-direction: column;
+      gap: 2vw;
+      /* @include medium-only{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      } */
   }
 }
 

@@ -1,4 +1,6 @@
-const recipes = [
+"use strict";
+
+export const recipesSource = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -20,7 +22,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Sucre",
-                "quantite" : 30,
+                "quantity" : 30,
                 "unit" : "grammes"
             },
             {
@@ -52,7 +54,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Carotte",
-                "quantite" : 1
+                "quantity" : 1
             },
             {
                 "ingredient" : "Citron Vert",
