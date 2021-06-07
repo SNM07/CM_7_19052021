@@ -38,136 +38,165 @@ for (let recipe of recipesSource) {
       recipe.appliance,
       recipe.ustensils
     )
-    );
-    generateHTMLForCards(recipe);
+  );
+  generateHTMLForCards(recipe);
 }
-
-//generateHTMLForCards(recipes);
-
 
 function generateHTMLForCards(recipe) {
-    let currentRecipe = recipe;
-    console.log(currentRecipe)
-    const cardsArea = document.getElementById("cardsContainer");
+  let currentRecipe = recipe;
+  console.log(currentRecipe);
+  const cardsArea = document.getElementById("cardsContainer");
 
-    const recipCard = document.createElement("article");
-    const imageCont = document.createElement("div");
-    const recipInfo = document.createElement("div");
-    const recipHead = document.createElement("div");
-    const recipName = document.createElement("h2");
-    const recipTime = document.createElement("div");
-    const timeIcon = document.createElement("i");
-    const recipTimeSpan = document.createElement("span");
-    const recipMain = document.createElement("div");
-    const recipIng = document.createElement("div");
-    //const recipIngName = document.createElement("span");
-    //const recipIngQuantity = document.createElement("span");
-    //const recipIngMeasure = document.createElement("span");
-    const recipSteps = document.createElement("div");
-    const recipStepsText = document.createElement("p");
+  const recipCard = document.createElement("article");
+  const imageCont = document.createElement("div");
+  const recipInfo = document.createElement("div");
+  const recipHead = document.createElement("div");
+  const recipName = document.createElement("h2");
+  const recipTime = document.createElement("div");
+  const timeIcon = document.createElement("i");
+  const recipTimeSpan = document.createElement("span");
+  const recipMain = document.createElement("div");
+  const recipIng = document.createElement("div");
+  const recipSteps = document.createElement("div");
+  const recipStepsText = document.createElement("p");
 
-    recipCard.classList.add("recipeCard");
-    imageCont.classList.add("imageContainer");
-    recipInfo.classList.add("recipeInfos");
-    recipHead.classList.add("recipeHeading");
-    recipName.classList.add("recipeName");
-    recipTime.classList.add("recipeTime");
-    timeIcon.classList.add("far");
-    timeIcon.classList.add("fa-clock");
-    recipTimeSpan.classList.add("recipeTimeSpan");
-    recipMain.classList.add("recipeMain");
-    recipIng.classList.add("recipeIng");
-    //recipIngName.classList.add("recipeIngName");
-    //recipIngQuantity.classList.add("recipeIngQuantity");
-    //recipIngMeasure.classList.add("recipeIngMeasure");
-    recipSteps.classList.add("recipeSteps");
-    recipStepsText.classList.add("recipeStepsText");
+  recipCard.classList.add("recipeCard");
+  imageCont.classList.add("imageContainer");
+  recipInfo.classList.add("recipeInfos");
+  recipHead.classList.add("recipeHeading");
+  recipName.classList.add("recipeName");
+  recipTime.classList.add("recipeTime");
+  timeIcon.classList.add("far");
+  timeIcon.classList.add("fa-clock");
+  recipTimeSpan.classList.add("recipeTimeSpan");
+  recipMain.classList.add("recipeMain");
+  recipIng.classList.add("recipeIng");
+  recipSteps.classList.add("recipeSteps");
+  recipStepsText.classList.add("recipeStepsText");
 
-    recipName.innerHTML = recipe.name;
-    recipTimeSpan.innerHTML = " " + recipe.time;
-    let ingList = recipe.ingredients;
-    ingList.forEach(function (item) {
-        const recipIngName = document.createElement("span");
-        const recipIngQuantity = document.createElement("span");
-        const recipIngMeasure = document.createElement("span");
-        recipIngName.classList.add("recipeIngName");
-        recipIngName.innerHTML = item.ingredient;
-        if (item.quantity !== undefined) {
-            recipIngQuantity.classList.add("recipeIngQuantity");
-            recipIngQuantity.innerHTML = " : " + item.quantity;
-            recipIngName.appendChild(recipIngQuantity);
-        }
-        if (item.unit !== undefined) {
-            recipIngMeasure.classList.add("recipeIngMeasure");
-            recipIngMeasure.innerHTML = " " + item.unit;
-            recipIngQuantity.appendChild(recipIngMeasure);
-        }
-        recipIng.appendChild(recipIngName); //
-    });
-    recipStepsText.innerHTML = recipe.description;
+  recipName.innerHTML = recipe.name;
+  recipTimeSpan.innerHTML = " " + recipe.time;
+  let ingList = recipe.ingredients;
+  ingList.forEach(function (item) {
+    const recipIngName = document.createElement("span");
+    const recipIngQuantity = document.createElement("span");
+    const recipIngMeasure = document.createElement("span");
+    recipIngName.classList.add("recipeIngName");
+    recipIngName.innerHTML = item.ingredient;
+    if (item.quantity !== undefined) {
+      recipIngQuantity.classList.add("recipeIngQuantity");
+      recipIngQuantity.innerHTML = " : " + item.quantity;
+      recipIngName.appendChild(recipIngQuantity);
+    }
+    if (item.unit !== undefined) {
+      recipIngMeasure.classList.add("recipeIngMeasure");
+      recipIngMeasure.innerHTML = " " + item.unit;
+      recipIngQuantity.appendChild(recipIngMeasure);
+    }
+    recipIng.appendChild(recipIngName);
+  });
+  recipStepsText.innerHTML = recipe.description;
 
-    recipCard.setAttribute("data-app", recipe.appliance);
-    recipCard.setAttribute("data-ust", recipe.ustensils);
+  recipCard.setAttribute("data-app", recipe.appliance);
+  recipCard.setAttribute("data-ust", recipe.ustensils);
 
-    recipCard.appendChild(imageCont);
-    recipCard.appendChild(recipInfo);
-    recipInfo.appendChild(recipHead);
-    recipHead.appendChild(recipName);
-    recipHead.appendChild(recipTime);
-    recipTime.appendChild(timeIcon);
-    recipTime.appendChild(recipTimeSpan);
-    recipInfo.appendChild(recipMain);
-    recipMain.appendChild(recipIng);
-    //recipIng.appendChild(recipIngName);
-    //recipIngName.appendChild(recipIngQuantity);
-    //recipIngName.appendChild(recipIngMeasure);
-    recipMain.appendChild(recipSteps);
-    recipSteps.appendChild(recipStepsText);
-    cardsArea.appendChild(recipCard);
-
+  recipCard.appendChild(imageCont);
+  recipCard.appendChild(recipInfo);
+  recipInfo.appendChild(recipHead);
+  recipHead.appendChild(recipName);
+  recipHead.appendChild(recipTime);
+  recipTime.appendChild(timeIcon);
+  recipTime.appendChild(recipTimeSpan);
+  recipInfo.appendChild(recipMain);
+  recipMain.appendChild(recipIng);
+  recipMain.appendChild(recipSteps);
+  recipSteps.appendChild(recipStepsText);
+  cardsArea.appendChild(recipCard);
 }
 
-/* 
-<article class="recipeCard">
-<div class="imageContainer"></div>
-<div class="recipeInfos">
-  <div class="recipeHeading">
-    <h2 class="recipeName">Limonade de Coco</h2>
-    <div class="recipeTime">
-      <i class="far fa-clock"></i>
-      <span class="recipeTimeSpan">10</span>
-    </div>
-  </div>
-  <div class="recipeMain">
-    <div class="recipeIng">
-      <span class="recipeIngName"
-        >Lait de coco: <span class="recipeIngQuantity">400</span
-        ><span class="recipeIngMeasure"> ml</span></span
-      >
-      <span class="recipeIngName"
-        >Jus de citron: <span class="recipeIngQuantity">2</span
-        ><span class="recipeIngMeasure"></span
-      ></span>
-      <span class="recipeIngName"
-        >Crème de coco: <span class="recipeIngQuantity">2</span
-        ><span class="recipeIngMeasure"> cuillères</span></span
-      >
-      <span class="recipeIngName"
-        >Sucre: <span class="recipeIngQuantity">30</span
-        ><span class="recipeIngMeasure"> gr</span></span
-      >
-      <span class="recipeIngName"
-        >Glaçons: <span class="recipeIngQuantity">2</span
-        ><span class="recipeIngMeasure"></span
-      ></span>
-    </div>
-    <div class="recipeSteps">
-      <p>
-        Mettre les glaçons à votre goût dans le blender, ajouter le
-        lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer
-        jusqu'à avoir la consistence désirée
-      </p>
-    </div>
-  </div>
-</div>
-</article>" */
+const menuIng = [];
+
+for (let ing of recipesSource) {
+  let ingListSource = ing.ingredients;
+  ingListSource.forEach(function (element) {
+    let ingItem = element.ingredient;
+    generateMenuIngredients(ingItem);
+  });
+}
+
+//menuIng.sort( (a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
+
+function generateMenuIngredients(ingItem) {
+  const ingList = document.getElementById("ingList");
+  if (menuIng.indexOf(ingItem) === -1) {
+    menuIng.push(ingItem);
+    const ingListItem = document.createElement("li");
+    ingListItem.innerHTML = ingItem;
+    ingListItem.setAttribute("id", ingItem);
+    ingList.appendChild(ingListItem);
+  } else if (menuIng.indexOf(ingItem) > -1) {
+    console.log(ingItem + " existe déjà dans le tableau.");
+  }
+  menuIng.sort( (a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
+}
+
+
+const menuApp = [];
+
+for (let app of recipesSource) {
+  let appItem = app.appliance;
+    generateMenuAppliance(appItem);
+}
+
+function generateMenuAppliance(appItem) {
+  const appList = document.getElementById("appList");
+  if (menuApp.indexOf(appItem) === -1) {
+    menuApp.push(appItem);
+    const appListItem = document.createElement("li");
+    appListItem.innerHTML = appItem;
+    appListItem.setAttribute("id", appItem);
+    appList.appendChild(appListItem);
+  } else if (menuApp.indexOf(appItem) > -1) {
+    console.log(appItem + " existe déjà dans le tableau.");
+  }
+}
+
+const menuUst = [];
+
+for (let ust of recipesSource) {
+  let ustListSource = ust.ustensils;
+  ustListSource.forEach(function (element) {
+    let ustItem = element;
+    generateMenuUstensils(ustItem);
+  })
+}
+
+function generateMenuUstensils(ustItem) {
+  const ustList = document.getElementById("ustList");
+  if (menuUst.indexOf(ustItem) === -1) {
+    menuUst.push(ustItem);
+    const ustListItem = document.createElement("li");
+    ustListItem.innerHTML = ustItem;
+    ustListItem.setAttribute("id", ustItem);
+    ustList.appendChild(ustListItem);
+  } else if (menuUst.indexOf(ustItem) > -1) {
+    console.log(ustItem + " existe déjà dans le tableau.");
+  }
+}
+
+
+document.querySelectorAll('.arrowCont').forEach(div => {
+	div.onclick = show;
+});
+
+function show() {
+  const hidden = this.parentNode.nextElementSibling;
+  const largeur = this.parentNode.parentNode;
+	if (hidden.style.display == 'none') {
+    hidden.style.display = 'flex';
+    largeur.style.width = "120%";
+  } else {
+    hidden.style.display = 'none';
+    largeur.style.width = "auto";
+  }
+}

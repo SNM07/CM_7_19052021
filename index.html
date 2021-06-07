@@ -47,46 +47,52 @@
       <nav id="searchFiltersContainer">
         <div id="searchFilters">
           <div class="filterInput" id="ingredients">
+            <input type="text" placeholder="Ingrédients" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingrédients'" class="inputColor" />
             <label
               id="inputTrigger--name"
               class="inputTrigger"
               data-status="close"
             >
-              <input type="text" placeholder="Ingrédients" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingrédients'" class="inputColor" />
+              <div class="arrowCont" id="arrowContIng">
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up hiddenArrow"></i>
-              <ul>
-                <li>Element de liste</li>
-              </ul>
+              </div>
             </label>
+            <ul id="ingList" class="hidden">
+              
+            </ul>
           </div>
           <div class="filterInput" id="appareil">
+            <input type="text" placeholder="Appareil" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Appareil'" class="inputColor" />
             <label
               id="inputTrigger--name"
               class="inputTrigger"
               data-status="close"
             >
-              <input type="text" placeholder="Appareil" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Appareil'" class="inputColor" />
+              <div class="arrowCont" id="arrowContApp">
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up hiddenArrow"></i>
-              <ul>
-                <li>Element de liste</li>
-              </ul>
+              </div>
             </label>
+            <ul id="appList" class="hidden">
+              
+            </ul>
           </div>
           <div class="filterInput" id="ustensiles">
+            <input type="text" placeholder="Ustensiles" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ustensiles'" class="inputColor" />
             <label
               id="inputTrigger--name"
               class="inputTrigger"
               data-status="close"
             >
-              <input type="text" placeholder="Ustensiles" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ustensiles'" class="inputColor" />
+              <div class="arrowCont" id="arrowContUst">
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up hiddenArrow"></i>
-              <ul>
-                <li>Element de liste</li>
-              </ul>
+              </div>
             </label>
+            <ul id="ustList" class="hidden">
+              
+            </ul>
           </div>
         </div>
       </nav>

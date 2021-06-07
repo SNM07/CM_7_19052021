@@ -62,12 +62,21 @@
           color: white;
           &.ing{
             background-color: $color-ing;  
+            &:hover{
+              background-color: darken($color-ing, 10%);
+            }
           }
           &.app{
             background-color: $color-app;  
+            &:hover{
+              background-color: darken($color-app, 10%);
+            }
           }
           &.ust{
             background-color: $color-ust;  
+            &:hover{
+              background-color: darken($color-ust, 10%);
+            }
           }
           & .activeFilterText{
               padding-right: 1rem;

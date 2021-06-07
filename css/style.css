@@ -8,31 +8,58 @@
 
 .filterInput {
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
 }
 .filterInput#ingredients {
   background-color: #3282f7;
 }
+.filterInput#ingredients:hover {
+  background-color: #0966ed;
+}
 .filterInput#appareil {
   background-color: #68d9a4;
+}
+.filterInput#appareil:hover {
+  background-color: #3fcf8b;
 }
 .filterInput#ustensiles {
   background-color: #ed6454;
 }
+.filterInput#ustensiles:hover {
+  background-color: #e83a26;
+}
 .filterInput#ingredients .inputColor {
   background-color: #3282f7;
+}
+.filterInput#ingredients .inputColor:hover {
+  background-color: #0966ed;
 }
 .filterInput#appareil .inputColor {
   background-color: #68d9a4;
 }
+.filterInput#appareil .inputColor:hover {
+  background-color: #3fcf8b;
+}
 .filterInput#ustensiles .inputColor {
   background-color: #ed6454;
+}
+.filterInput#ustensiles .inputColor:hover {
+  background-color: #e83a26;
+}
+.filterInput .inputTrigger {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
 }
 .filterInput .inputColor {
   border-radius: 5px 0 0 0;
   border: none;
   height: 4rem;
   color: white;
-  padding-left: 1rem;
+  width: 80%;
   font-size: 1.2rem;
 }
 .filterInput .inputColor::placeholder {
@@ -40,16 +67,53 @@
   font-size: 1.2rem;
   padding: 1rem;
 }
-.filterInput .hiddenArrow {
+.filterInput .arrowCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+.filterInput .arrowCont .hiddenArrow {
   display: none;
 }
-.filterInput .fas {
+.filterInput .arrowCont .fas {
   color: white;
-  padding-right: 1rem;
+  cursor: pointer;
 }
-.filterInput li {
+.filterInput ul {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 4rem;
+  padding: 0.5rem;
+  z-index: 5;
+}
+.filterInput ul#ingList {
+  background-color: #3282f7;
+}
+.filterInput ul#ingList li:hover {
+  background-color: #0966ed;
+}
+.filterInput ul#appList {
+  background-color: #68d9a4;
+}
+.filterInput ul#appList li:hover {
+  background-color: #3fcf8b;
+}
+.filterInput ul#ustList {
+  background-color: #ed6454;
+}
+.filterInput ul#ustList li:hover {
+  background-color: #e83a26;
+}
+.filterInput ul li {
   color: white;
   list-style: none;
+  width: 28%;
+  padding: 0.3rem;
 }
 
 .recipeCard {
@@ -258,11 +322,20 @@
 #pageMain #activeFiltersContainer .activeFilter.ing {
   background-color: #3282f7;
 }
+#pageMain #activeFiltersContainer .activeFilter.ing:hover {
+  background-color: #0966ed;
+}
 #pageMain #activeFiltersContainer .activeFilter.app {
   background-color: #68d9a4;
 }
+#pageMain #activeFiltersContainer .activeFilter.app:hover {
+  background-color: #3fcf8b;
+}
 #pageMain #activeFiltersContainer .activeFilter.ust {
   background-color: #ed6454;
+}
+#pageMain #activeFiltersContainer .activeFilter.ust:hover {
+  background-color: #e83a26;
 }
 #pageMain #activeFiltersContainer .activeFilter .activeFilterText {
   padding-right: 1rem;

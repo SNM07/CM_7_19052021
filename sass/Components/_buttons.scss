@@ -1,29 +1,57 @@
 .filterInput {
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
   &#ingredients {
     background-color: $color-ing;
+    &:hover{
+      background-color: darken($color-ing, 10%);
+    }
   }
   &#appareil {
     background-color: $color-app;
+    &:hover{
+      background-color: darken($color-app, 10%);
+    }
   }
   &#ustensiles {
     background-color: $color-ust;
+    &:hover{
+      background-color: darken($color-ust, 10%);
+    }
   }
   &#ingredients .inputColor {
     background-color: $color-ing;
+    &:hover{
+      background-color: darken($color-ing, 10%);
+    }
   }
   &#appareil .inputColor {
     background-color: $color-app;
+    &:hover{
+      background-color: darken($color-app, 10%);
+    }
   }
   &#ustensiles .inputColor {
     background-color: $color-ust;
+    &:hover{
+      background-color: darken($color-ust, 10%);
+    }
+  }
+  & .inputTrigger{
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
   }
   & .inputColor {
     border-radius: 5px 0 0 0;
     border: none;
     height: 4rem;
     color: white;
-    padding-left: 1rem;
+    //padding-left: 1rem;
+    width: 80%;
     font-size: 1.2rem;
     &::placeholder {
       color: white;
@@ -31,15 +59,56 @@
       padding: 1rem;
     }
   }
+  & .arrowCont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    
   & .hiddenArrow {
     display: none;
   }
   & .fas {
     color: white;
-    padding-right: 1rem;
+    //padding-right: .5rem;
+    //padding-left: 1rem;
+    cursor: pointer;
   }
+}
+  & ul{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 4rem;
+    padding: .5rem;
+    z-index: 5;
+    &#ingList{
+      background-color: $color-ing;
+      & li:hover{
+        background-color: darken($color-ing, 10%);
+      }
+    }
+    &#appList{
+      background-color: $color-app;
+      & li:hover{
+        background-color: darken($color-app, 10%);
+      }
+    }
+    &#ustList{
+      background-color: $color-ust;
+      & li:hover{
+        background-color: darken($color-ust, 10%);
+      }
+    }
   & li {
     color: white;
     list-style: none;
+    width: 28%;
+    padding: .3rem;
   }
 }
+}
+
