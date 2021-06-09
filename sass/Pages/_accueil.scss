@@ -60,6 +60,7 @@
           padding: .5rem 1rem;
           border-radius: 5px;
           color: white;
+          cursor: pointer;
           &.ing{
             background-color: $color-ing;  
             &:hover{

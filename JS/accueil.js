@@ -143,6 +143,7 @@ function generateMenuIngredients() {
     const ingListItem = document.createElement("li");
     ingListItem.innerHTML = element;
     ingListItem.setAttribute("id", element);
+    ingListItem.classList.add("ING");
     ingList.appendChild(ingListItem);
   });
 }
@@ -173,6 +174,7 @@ function generateMenuAppliance() {
     const appListItem = document.createElement("li");
     appListItem.innerHTML = element;
     appListItem.setAttribute("id", element);
+    appListItem.classList.add("APP");
     appList.appendChild(appListItem);
   });
 }
@@ -205,6 +207,7 @@ function generateMenuUstensils() {
     const ustListItem = document.createElement("li");
     ustListItem.innerHTML = element;
     ustListItem.setAttribute("id", element);
+    ustListItem.classList.add("UST");
     ustList.appendChild(ustListItem);
   });
 }
@@ -274,4 +277,45 @@ function myFunction(event) {
       li[i].style.display = "none";
     }
   }
+}
+
+const tagListArray = [];
+
+document.querySelectorAll(".hidden li").forEach((li) => {
+  li.onclick = function () {
+    if (tagListArray.indexOf(this.innerHTML) === -1) {
+      tagListArray.push(this.innerHTML);
+      displayTag(this.innerHTML, this.className);
+    }
+  };
+});
+
+function displayTag(textValue, tagType) {
+  const container = document.getElementById("activeFiltersContainer");
+  let tag = document.createElement("div");
+  let tagText = document.createElement("span");
+  const tagCloseIcon = document.createElement("i");
+  tag.classList.add("activeFilter");
+  switch (tagType) {
+    case "ING": tag.classList.add("ing"); break;
+    case "APP": tag.classList.add("app"); break;
+    case "UST": tag.classList.add("ust"); break;
+  }
+  tag.addEventListener('click', remove);
+  tagText.classList.add("activeFilterText");
+  tagCloseIcon.classList.add("far", "fa-times-circle");
+  tag.innerHTML = textValue;
+  tag.appendChild(tagText);
+  tag.appendChild(tagCloseIcon);
+  container.appendChild(tag);
+}
+
+function remove(e) {
+  let value = e.target.innerText;
+  e.target.remove();
+  var index = tagListArray.indexOf(value);
+  if (index > -1) {
+    tagListArray.splice(index, 1);
+  }
+  return tagListArray;
 }

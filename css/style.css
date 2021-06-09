@@ -321,6 +321,7 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 #pageMain #activeFiltersContainer .activeFilter.ing {
   background-color: #3282f7;
