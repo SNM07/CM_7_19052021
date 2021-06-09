@@ -344,6 +344,9 @@
 #pageMain #activeFiltersContainer .activeFilter .activeFilterText {
   padding-right: 1rem;
 }
+#pageMain #activeFiltersContainer .activeFilter .fa-times-circle {
+  pointer-events: none;
+}
 #pageMain #searchFiltersContainer {
   width: 90vw;
   margin: 2vw auto 2vw auto;

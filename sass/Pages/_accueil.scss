@@ -82,6 +82,9 @@
           & .activeFilterText{
               padding-right: 1rem;
           }
+          & .fa-times-circle{
+            pointer-events: none;
+          }
       }
   }
   & #searchFiltersContainer{
