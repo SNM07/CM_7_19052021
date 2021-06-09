@@ -250,3 +250,28 @@ function show() {
     thisArrowUp.style.display = "none";
   }
 }
+
+let inputIng = document.getElementById("ingSearch");
+let inputApp = document.getElementById("appSearch");
+let inputUst = document.getElementById("ustSearch");
+
+inputIng.addEventListener("keyup", myFunction);
+inputApp.addEventListener("keyup", myFunction);
+inputUst.addEventListener("keyup", myFunction);
+
+function myFunction(event) {
+  var input, filter, ul, li, a, i, txtValue;
+  input = event.currentTarget;
+  ul = input.parentNode.lastElementChild;
+  filter = input.value.toUpperCase();
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
