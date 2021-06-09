@@ -55,7 +55,7 @@
   width: 20%;
 }
 .filterInput .inputColor {
-  border-radius: 5px 0 0 0;
+  border-radius: 5px 0 0 5px;
   border: none;
   height: 4rem;
   color: white;
@@ -74,10 +74,11 @@
   width: 100%;
   cursor: pointer;
 }
-.filterInput .arrowCont .hiddenArrow {
+.filterInput .arrowCont .arrowUp {
+  color: white;
   display: none;
 }
-.filterInput .arrowCont .fas {
+.filterInput .arrowCont .arrowDown {
   color: white;
   cursor: pointer;
 }
@@ -87,6 +88,7 @@
   justify-content: space-between;
   align-items: center;
   position: absolute;
+  border-radius: 0 0 5px 5px;
   top: 4rem;
   padding: 0.5rem;
   z-index: 5;

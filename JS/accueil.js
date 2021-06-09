@@ -116,87 +116,137 @@ function generateHTMLForCards(recipe) {
 
 const menuIng = [];
 
-for (let ing of recipesSource) {
-  let ingListSource = ing.ingredients;
-  ingListSource.forEach(function (element) {
-    let ingItem = element.ingredient;
-    generateMenuIngredients(ingItem);
-  });
+createMenuIng();
+function createMenuIng() {
+  for (let ing of recipesSource) {
+    let ingListSource = ing.ingredients;
+    ingListSource.forEach(function (element) {
+      let ingItem = element.ingredient;
+      generateMenuIngredientsList(ingItem);
+    });
+  }
+  generateMenuIngredients();
 }
 
-//menuIng.sort( (a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
-
-function generateMenuIngredients(ingItem) {
-  const ingList = document.getElementById("ingList");
+function generateMenuIngredientsList(ingItem) {
   if (menuIng.indexOf(ingItem) === -1) {
     menuIng.push(ingItem);
-    const ingListItem = document.createElement("li");
-    ingListItem.innerHTML = ingItem;
-    ingListItem.setAttribute("id", ingItem);
-    ingList.appendChild(ingListItem);
   } else if (menuIng.indexOf(ingItem) > -1) {
     console.log(ingItem + " existe déjà dans le tableau.");
   }
-  menuIng.sort( (a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
+  menuIng.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
 }
 
+function generateMenuIngredients() {
+  const ingList = document.getElementById("ingList");
+  menuIng.forEach(function (element) {
+    const ingListItem = document.createElement("li");
+    ingListItem.innerHTML = element;
+    ingListItem.setAttribute("id", element);
+    ingList.appendChild(ingListItem);
+  });
+}
 
 const menuApp = [];
 
-for (let app of recipesSource) {
-  let appItem = app.appliance;
-    generateMenuAppliance(appItem);
+createMenuApp();
+function createMenuApp() {
+  for (let app of recipesSource) {
+    let appItem = app.appliance;
+    generateMenuApplianceList(appItem);
+  }
+  generateMenuAppliance();
 }
 
-function generateMenuAppliance(appItem) {
-  const appList = document.getElementById("appList");
+function generateMenuApplianceList(appItem) {
   if (menuApp.indexOf(appItem) === -1) {
     menuApp.push(appItem);
-    const appListItem = document.createElement("li");
-    appListItem.innerHTML = appItem;
-    appListItem.setAttribute("id", appItem);
-    appList.appendChild(appListItem);
   } else if (menuApp.indexOf(appItem) > -1) {
     console.log(appItem + " existe déjà dans le tableau.");
   }
+  menuApp.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
+}
+
+function generateMenuAppliance() {
+  const appList = document.getElementById("appList");
+  menuApp.forEach(function (element) {
+    const appListItem = document.createElement("li");
+    appListItem.innerHTML = element;
+    appListItem.setAttribute("id", element);
+    appList.appendChild(appListItem);
+  });
 }
 
 const menuUst = [];
 
-for (let ust of recipesSource) {
-  let ustListSource = ust.ustensils;
-  ustListSource.forEach(function (element) {
-    let ustItem = element;
-    generateMenuUstensils(ustItem);
-  })
+createMenuUst();
+function createMenuUst() {
+  for (let ust of recipesSource) {
+    let ustListSource = ust.ustensils;
+    ustListSource.forEach(function (element) {
+      let ustItem = element;
+      generateMenuUstensilsList(ustItem);
+    });
+  }
+  generateMenuUstensils();
 }
 
-function generateMenuUstensils(ustItem) {
-  const ustList = document.getElementById("ustList");
+function generateMenuUstensilsList(ustItem) {
   if (menuUst.indexOf(ustItem) === -1) {
     menuUst.push(ustItem);
-    const ustListItem = document.createElement("li");
-    ustListItem.innerHTML = ustItem;
-    ustListItem.setAttribute("id", ustItem);
-    ustList.appendChild(ustListItem);
   } else if (menuUst.indexOf(ustItem) > -1) {
     console.log(ustItem + " existe déjà dans le tableau.");
   }
 }
 
+function generateMenuUstensils() {
+  const ustList = document.getElementById("ustList");
+  menuApp.forEach(function (element) {
+    const ustListItem = document.createElement("li");
+    ustListItem.innerHTML = element;
+    ustListItem.setAttribute("id", element);
+    ustList.appendChild(ustListItem);
+  });
+}
 
-document.querySelectorAll('.arrowCont').forEach(div => {
-	div.onclick = show;
+document.querySelectorAll(".arrowCont").forEach((div) => {
+  div.onclick = show;
 });
 
 function show() {
   const hidden = this.parentNode.nextElementSibling;
   const largeur = this.parentNode.parentNode;
-	if (hidden.style.display == 'none') {
-    hidden.style.display = 'flex';
+  const menuLists = document.getElementsByClassName("hidden");
+  const menuButtons = document.getElementsByClassName("filterInput");
+  const arrowDown = document.getElementsByClassName("arrowDown");
+  const arrowUp = document.getElementsByClassName("arrowUp");
+  const thisArrowDown = this.firstElementChild;
+  const thisArrowUp = this.lastElementChild;
+
+  if (hidden.style.display == "none") {
+    [...menuLists].forEach(function (element) {
+      element.style.display = "none";
+    });
+    [...menuButtons].forEach(function (element) {
+      element.style.width = "auto";
+      element.style.borderRadius = "5px";
+    });
+    [...arrowDown].forEach(function (element) {
+      element.style.display = "block";
+    });
+    [...arrowUp].forEach(function (element) {
+      element.style.display = "none";
+    });
+    hidden.style.display = "flex";
+    largeur.style.borderRadius = "5px 5px 0 0";
     largeur.style.width = "120%";
+    thisArrowDown.style.display = "none";
+    thisArrowUp.style.display = "block";
   } else {
-    hidden.style.display = 'none';
+    hidden.style.display = "none";
+    largeur.style.borderRadius = "5px";
     largeur.style.width = "auto";
+    thisArrowDown.style.display = "block";
+    thisArrowUp.style.display = "none";
   }
 }
