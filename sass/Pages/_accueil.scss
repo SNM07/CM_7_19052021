@@ -3,9 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2vw;
+    margin: 4vw;
+    @include medium-only{
+      margin: 2vw;
+    }
     & #logo {
-      width: 25vw;
+      width: 50vw;
+      @include medium-only{
+        width: 25vw;
+      }
     }
   }
   & #warning{
@@ -50,9 +56,13 @@
   }
   & #activeFiltersContainer{
       display:flex;
-      gap: 1rem;
+      flex-wrap: wrap;
+      gap: .5rem;
       width: 90vw;
       margin: 1rem auto;
+      @include medium-only{
+        gap: 1rem;
+      }
       & .activeFilter{
           display: flex;
           align-items: center;
@@ -89,12 +99,20 @@
   }
   & #searchFiltersContainer{
     width: 90vw;
-    margin: 2vw auto 2vw auto;
+    margin: 2vw auto 6vw auto;
+    @include medium-only{
+      margin: 2vw auto 2vw auto;
+    }
   & #searchFilters{
       display: flex;
       justify-content: flex-start;
+      flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
+      @include medium-only{
+        flex-direction: row;
+        gap: 1.5rem;
+      }
   }
 }
   & #cardsContainer{

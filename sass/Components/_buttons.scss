@@ -3,7 +3,11 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  width: 100%;
   cursor: pointer;
+  @include medium-only{
+    width:auto;
+  }
   &#ingredients {
     background-color: $color-ing;
     &:hover{

@@ -39,7 +39,7 @@
       padding: 1rem;
       margin-bottom: 1vw;
       & .recipeName {
-        font-size: 2.2vw;
+        font-size: 3.2vw;
         @include medium-only{
           font-size: 2vw;
                 }
@@ -49,7 +49,7 @@
       }
       & .recipeTime {
         font-weight: bold;
-        font-size: 2.2vw;
+        font-size: 3.2vw;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -65,7 +65,7 @@
     }
     & .recipeMain {
       display: flex;
-      font-size: 1.8vw;
+      font-size: 2.8vw;
       height: 20vw;
       overflow: hidden;
       position: relative;
@@ -89,6 +89,9 @@
       }
       @include large-only{
         background:linear-gradient(transparent 6vw,lightgray 9vw);
+      }
+      @media screen and (max-width: 500px) {
+        height: 90%;
       }
       }
       & .recipeIng {

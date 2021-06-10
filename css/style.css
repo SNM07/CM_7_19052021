@@ -11,7 +11,13 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  width: 100%;
   cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .filterInput {
+    width: auto;
+  }
 }
 .filterInput#ingredients {
   background-color: #3282f7;
@@ -173,7 +179,7 @@
   margin-bottom: 1vw;
 }
 .recipeCard .recipeInfos .recipeHeading .recipeName {
-  font-size: 2.2vw;
+  font-size: 3.2vw;
 }
 @media screen and (min-width: 768px) {
   .recipeCard .recipeInfos .recipeHeading .recipeName {
@@ -187,7 +193,7 @@
 }
 .recipeCard .recipeInfos .recipeHeading .recipeTime {
   font-weight: bold;
-  font-size: 2.2vw;
+  font-size: 3.2vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -206,7 +212,7 @@
 }
 .recipeCard .recipeInfos .recipeMain {
   display: flex;
-  font-size: 1.8vw;
+  font-size: 2.8vw;
   height: 20vw;
   overflow: hidden;
   position: relative;
@@ -241,6 +247,11 @@
     background: linear-gradient(transparent 6vw, lightgray 9vw);
   }
 }
+@media screen and (max-width: 500px) {
+  .recipeCard .recipeInfos .recipeMain:before {
+    height: 90%;
+  }
+}
 .recipeCard .recipeInfos .recipeMain .recipeIng {
   display: flex;
   flex-direction: column;
@@ -266,10 +277,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2vw;
+  margin: 4vw;
+}
+@media screen and (min-width: 768px) {
+  #pageMain #logoContainer {
+    margin: 2vw;
+  }
 }
 #pageMain #logoContainer #logo {
-  width: 25vw;
+  width: 50vw;
+}
+@media screen and (min-width: 768px) {
+  #pageMain #logoContainer #logo {
+    width: 25vw;
+  }
 }
 #pageMain #warning {
   width: 90vw;
@@ -310,9 +331,15 @@
 }
 #pageMain #activeFiltersContainer {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   width: 90vw;
   margin: 1rem auto;
+}
+@media screen and (min-width: 768px) {
+  #pageMain #activeFiltersContainer {
+    gap: 1rem;
+  }
 }
 #pageMain #activeFiltersContainer .activeFilter {
   display: flex;
@@ -349,13 +376,25 @@
 }
 #pageMain #searchFiltersContainer {
   width: 90vw;
-  margin: 2vw auto 2vw auto;
+  margin: 2vw auto 6vw auto;
+}
+@media screen and (min-width: 768px) {
+  #pageMain #searchFiltersContainer {
+    margin: 2vw auto 2vw auto;
+  }
 }
 #pageMain #searchFiltersContainer #searchFilters {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+}
+@media screen and (min-width: 768px) {
+  #pageMain #searchFiltersContainer #searchFilters {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
 }
 #pageMain #cardsContainer {
   width: 91%;
