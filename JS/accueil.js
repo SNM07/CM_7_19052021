@@ -118,107 +118,62 @@ function generateHTMLForCards(recipe) {
 
 ///////////////////////////////////////////////
 
-//Generation Menu Ingredients
+//Generation Menus
 
 const menuIng = [];
+const menuApp = [];
+const menuUst = [];
 
-createMenuIng();
-function createMenuIng() {
+let ingID = "ingList";
+let ingClass = "ING";
+let appID = "appList";
+let appClass = "APP";
+let ustID = "ustList";
+let ustClass = "UST";
+
+createMenus();
+function createMenus() {
   for (let ing of recipesSource) {
     let ingListSource = ing.ingredients;
     ingListSource.forEach(function (element) {
-      let ingItem = element.ingredient;
-      generateMenuIngredientsList(ingItem);
+      let item = element.ingredient;
+      generateMenuList(menuIng, item);
     });
   }
-  generateMenuIngredients();
-}
-
-function generateMenuIngredientsList(ingItem) {
-  if (menuIng.indexOf(ingItem) === -1) {
-    menuIng.push(ingItem);
-  } else if (menuIng.indexOf(ingItem) > -1) {
-    console.log(ingItem + " existe déjà dans le tableau.");
-  }
-  menuIng.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
-}
-
-function generateMenuIngredients() {
-  const ingList = document.getElementById("ingList");
-  menuIng.forEach(function (element) {
-    const ingListItem = document.createElement("li");
-    ingListItem.innerHTML = element;
-    ingListItem.setAttribute("id", element);
-    ingListItem.classList.add("ING");
-    ingList.appendChild(ingListItem);
-  });
-}
-
-//Generation Menu Appareils
-
-const menuApp = [];
-
-createMenuApp();
-function createMenuApp() {
   for (let app of recipesSource) {
-    let appItem = app.appliance;
-    generateMenuApplianceList(appItem);
+    let item = app.appliance;
+    generateMenuList(menuApp, item);
   }
-  generateMenuAppliance();
-}
-
-function generateMenuApplianceList(appItem) {
-  if (menuApp.indexOf(appItem) === -1) {
-    menuApp.push(appItem);
-  } else if (menuApp.indexOf(appItem) > -1) {
-    console.log(appItem + " existe déjà dans le tableau.");
-  }
-  menuApp.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
-}
-
-function generateMenuAppliance() {
-  const appList = document.getElementById("appList");
-  menuApp.forEach(function (element) {
-    const appListItem = document.createElement("li");
-    appListItem.innerHTML = element;
-    appListItem.setAttribute("id", element);
-    appListItem.classList.add("APP");
-    appList.appendChild(appListItem);
-  });
-}
-
-//Generation Menu Ustensiles
-
-const menuUst = [];
-
-createMenuUst();
-function createMenuUst() {
   for (let ust of recipesSource) {
     let ustListSource = ust.ustensils;
     ustListSource.forEach(function (element) {
-      let ustItem = element;
-      generateMenuUstensilsList(ustItem);
+      let item = element;
+      generateMenuList(menuUst, item);
     });
   }
-  generateMenuUstensils();
+
+  generateMenuItems(menuIng, ingID, ingClass);
+  generateMenuItems(menuApp, appID, appClass);
+  generateMenuItems(menuUst, ustID, ustClass);
 }
 
-function generateMenuUstensilsList(ustItem) {
-  if (menuUst.indexOf(ustItem) === -1) {
-    menuUst.push(ustItem);
-  } else if (menuUst.indexOf(ustItem) > -1) {
-    console.log(ustItem + " existe déjà dans le tableau.");
+function generateMenuList(arrayMenu, item) {
+  if (arrayMenu.indexOf(item) === -1) {
+    arrayMenu.push(item);
   }
+  arrayMenu.sort((a, b) =>
+    a.localeCompare(b, "fr", { ignorePunctuation: true })
+  );
 }
 
-function generateMenuUstensils() {
-  const ustList = document.getElementById("ustList");
-  menuApp.forEach(function (element) {
-    const ustListItem = document.createElement("li");
-    ustListItem.innerHTML = element;
-    ustListItem.setAttribute("id", element);
-    ustListItem.classList.add("UST");
-    ustList.appendChild(ustListItem);
+function generateMenuItems(arrayMenuList, listID, listClass) {
+  const menuList = document.getElementById(listID);
+  arrayMenuList.forEach(function (element) {
+    const menuListItem = document.createElement("li");
+    menuListItem.innerHTML = element;
+    menuListItem.setAttribute("id", element);
+    menuListItem.classList.add(listClass);
+    menuList.appendChild(menuListItem);
   });
 }
 
@@ -294,11 +249,11 @@ let inputIng = document.getElementById("ingSearch");
 let inputApp = document.getElementById("appSearch");
 let inputUst = document.getElementById("ustSearch");
 
-inputIng.addEventListener("keyup", myFunction);
-inputApp.addEventListener("keyup", myFunction);
-inputUst.addEventListener("keyup", myFunction);
+inputIng.addEventListener("keyup", menuFilter);
+inputApp.addEventListener("keyup", menuFilter);
+inputUst.addEventListener("keyup", menuFilter);
 
-function myFunction(event) {
+function menuFilter(event) {
   var input, filter, ul, li, a, i, txtValue;
   input = event.currentTarget;
   ul = input.parentNode.lastElementChild;
