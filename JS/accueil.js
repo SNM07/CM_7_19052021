@@ -42,6 +42,8 @@ for (let recipe of recipesSource) {
   generateHTMLForCards(recipe);
 }
 
+//Generation des cards recettes
+
 function generateHTMLForCards(recipe) {
   let currentRecipe = recipe;
   console.log(currentRecipe);
@@ -114,6 +116,10 @@ function generateHTMLForCards(recipe) {
   cardsArea.appendChild(recipCard);
 }
 
+///////////////////////////////////////////////
+
+//Generation Menu Ingredients
+
 const menuIng = [];
 
 createMenuIng();
@@ -148,6 +154,8 @@ function generateMenuIngredients() {
   });
 }
 
+//Generation Menu Appareils
+
 const menuApp = [];
 
 createMenuApp();
@@ -178,6 +186,8 @@ function generateMenuAppliance() {
     appList.appendChild(appListItem);
   });
 }
+
+//Generation Menu Ustensiles
 
 const menuUst = [];
 
@@ -211,6 +221,10 @@ function generateMenuUstensils() {
     ustList.appendChild(ustListItem);
   });
 }
+
+//////////////////////////////////////////////////////
+
+//Deploiement des Menus
 
 document.querySelectorAll(".arrowCont").forEach((div) => {
   div.onclick = show;
@@ -272,6 +286,10 @@ function show() {
   }
 }
 
+/////////////////////////////////////////////////////////
+
+//Filtre des éléments en fonction de l'input
+
 let inputIng = document.getElementById("ingSearch");
 let inputApp = document.getElementById("appSearch");
 let inputUst = document.getElementById("ustSearch");
@@ -296,6 +314,10 @@ function myFunction(event) {
     }
   }
 }
+
+/////////////////////////////////////////////////
+
+//Affichage des tags sélectionnés
 
 const tagListArray = [];
 
