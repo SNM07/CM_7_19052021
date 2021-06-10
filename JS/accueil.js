@@ -46,7 +46,6 @@ for (let recipe of recipesSource) {
 
 function generateHTMLForCards(recipe) {
   let currentRecipe = recipe;
-  console.log(currentRecipe);
   const cardsArea = document.getElementById("cardsContainer");
 
   const recipCard = document.createElement("article");
@@ -281,6 +280,11 @@ document.querySelectorAll(".hidden li").forEach((li) => {
     if (tagListArray.indexOf(this.innerHTML) === -1) {
       tagListArray.push(this.innerHTML);
       displayTag(this.innerHTML, this.className);
+      //
+      tagListArray.forEach(function (el) {
+        search(recipesSource, el);
+      });
+      //
     }
   };
 });
@@ -319,4 +323,23 @@ function remove(e) {
     tagListArray.splice(index, 1);
   }
   return tagListArray;
+}
+
+////////////////////////////////////////
+//TESTS
+///////////////////////////////////////
+
+function search(arr, s) {
+  var matches = [],
+    i,
+    key;
+
+  for (i = arr.length; i--; )
+    for (key in arr[i])
+      if (arr[i].hasOwnProperty(key) && arr[i][key].toString().indexOf(s) > -1)
+        matches.push(recipes[i]); // <-- This can be changed to anything
+  //recipes.length = 0;                  // Clear contents
+  //recipes.push.apply(recipes, matches);  // Append new contents
+  console.log(recipes, matches);
+  return matches;
 }
