@@ -281,9 +281,9 @@ document.querySelectorAll(".hidden li").forEach((li) => {
       tagListArray.push(this.innerHTML);
       displayTag(this.innerHTML, this.className);
       //
-      tagListArray.forEach(function (el) {
+      /* tagListArray.forEach(function (el) {
         search(recipesSource, el);
-      });
+      }); */
       //
     }
   };
@@ -329,7 +329,7 @@ function remove(e) {
 //TESTS
 ///////////////////////////////////////
 
-function search(arr, s) {
+/* function search(arr, s) {
   var matches = [],
     i,
     key;
@@ -342,4 +342,17 @@ function search(arr, s) {
   //recipes.push.apply(recipes, matches);  // Append new contents
   console.log(recipes, matches);
   return matches;
-}
+} */
+
+var search = document.getElementById("site-search");
+var els = document.querySelectorAll(".recipeCard");
+
+search.addEventListener("keyup", function() {
+
+  Array.prototype.forEach.call(els, function(el) {
+    if (el.textContent.trim().indexOf(search.value) > -1)
+      el.style.display = 'block';
+    else el.style.display = 'none';
+  });
+
+});
