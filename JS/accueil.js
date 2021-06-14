@@ -98,8 +98,10 @@ function generateHTMLForCards(recipe) {
   });
   recipStepsText.innerHTML = recipe.description;
 
+  recipCard.setAttribute("title", recipe.name);
   recipCard.setAttribute("data-app", recipe.appliance);
   recipCard.setAttribute("data-ust", recipe.ustensils);
+  recipCard.style.display = "block";
 
   recipCard.appendChild(imageCont);
   recipCard.appendChild(recipInfo);
@@ -347,6 +349,7 @@ const callback = function (mutationsList, observer) {
         });
         console.log(newTag);
         displayCardTag();
+        //dispMess();
       });
       mutation.removedNodes.forEach(function (node) {
         console.log("The removed node", node);
@@ -379,6 +382,7 @@ const callback = function (mutationsList, observer) {
           //}
         });
       }
+      displayMessage();
       return newTag;
     }
   }
@@ -402,5 +406,48 @@ search.addEventListener("keyup", function () {
     } else {
       el.style.display = "none";
     }
+    displayMessage();
   });
+});
+
+//DISPLAY MESSAGE
+
+function displayMessage() {
+  //gives node list
+  let divs = document.querySelectorAll("#cardsContainer > .recipeCard");
+  //convert to an array
+  var divsArray = [].slice.call(divs);
+  //so now we can use filter
+  //find all divs with display none
+  var displayNone = divsArray.filter(function (el) {
+    return getComputedStyle(el).display === "none";
+  });
+  //and all divs that are not display none
+  var displayShow = divsArray.filter(function (el) {
+    return getComputedStyle(el).display !== "none";
+  });
+  //and use length to count
+  var numberOfHiddenDivs = displayNone.length;
+  var numberOfVisibleDivs = displayShow.length;
+  console.log(
+    "hidden:" + numberOfHiddenDivs + ", visible:" + numberOfVisibleDivs
+  );
+
+  const messageWarning = document.getElementById("warningText");
+  const messageWarningContainer = document.getElementById("warning");
+  messageWarningContainer.classList.add("wVisible");
+  messageWarning.innerText =
+    numberOfVisibleDivs + " éléments correspondent à la recherche";
+
+  if (numberOfHiddenDivs === 0) {
+    messageWarningContainer.classList.remove("wVisible");
+  }
+  if (numberOfVisibleDivs === 0) {
+    messageWarningContainer.classList.add("wVisible");
+    messageWarning.innerText = "Aucun élément ne correspond à la recherche";
+  }
+}
+
+document.getElementById("warning").addEventListener("click", function () {
+  document.getElementById("warning").classList.remove("wVisible");
 });
