@@ -280,11 +280,6 @@ document.querySelectorAll(".hidden li").forEach((li) => {
     if (tagListArray.indexOf(this.innerHTML) === -1) {
       tagListArray.push(this.innerHTML);
       displayTag(this.innerHTML, this.className);
-      //
-      /* tagListArray.forEach(function (el) {
-        search(recipesSource, el);
-      }); */
-      //
     }
   };
 });
@@ -329,30 +324,83 @@ function remove(e) {
 //TESTS
 ///////////////////////////////////////
 
-/* function search(arr, s) {
-  var matches = [],
-    i,
-    key;
+//RECHERCHE AVEC TAGS
 
-  for (i = arr.length; i--; )
-    for (key in arr[i])
-      if (arr[i].hasOwnProperty(key) && arr[i][key].toString().indexOf(s) > -1)
-        matches.push(recipes[i]); // <-- This can be changed to anything
-  //recipes.length = 0;                  // Clear contents
-  //recipes.push.apply(recipes, matches);  // Append new contents
-  console.log(recipes, matches);
-  return matches;
-} */
+// Select the node that will be observed for mutations
+const targetNode = document.getElementById("activeFiltersContainer");
+
+// Options for the observer (which mutations to observe)
+const config = { attributes: true, childList: true, subtree: true };
+
+let newTag = [];
+
+// Callback function to execute when mutations are observed
+const callback = function (mutationsList, observer) {
+  // Use traditional 'for loops' for IE 11
+  for (const mutation of mutationsList) {
+    if (mutation.type === "childList") {
+      mutation.addedNodes.forEach(function (node) {
+        console.log("The added node", node);
+        newTag.push({
+          class: mutation.addedNodes[0].classList[1],
+          text: mutation.addedNodes[0].innerText,
+        });
+        console.log(newTag);
+        displayCardTag();
+      });
+      mutation.removedNodes.forEach(function (node) {
+        console.log("The removed node", node);
+        newTag.splice(
+          newTag.findIndex((el) => el.id === node.innerText),
+          1
+        );
+        console.log(newTag);
+        displayCardTag();
+      });
+
+      function displayCardTag() {
+        var els = document.querySelectorAll(".recipeCard");
+        Array.prototype.forEach.call(els, function (el) {
+          let ingredient = el.children[1].children[1].children[0].innerText;
+          let appliance = el.dataset.app;
+          let ustensils = el.dataset.ust;
+          //if (el.textContent.trim().indexOf(search.value) > -1) {
+          newTag.forEach(function (tag) {
+            if (tag.class == "ing" && ingredient.includes(tag.text)) {
+              el.style.display = "block";
+            } else if (tag.class == "app" && appliance.includes(tag.text)) {
+              el.style.display = "block";
+            } else if (tag.class == "ust" && ustensils.includes(tag.text)) {
+              el.style.display = "block";
+            } else {
+              el.style.display = "none";
+            }
+          });
+          //}
+        });
+      }
+      return newTag;
+    }
+  }
+};
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+//RECHERCHE AVEC INPUT
 
 var search = document.getElementById("site-search");
 var els = document.querySelectorAll(".recipeCard");
 
-search.addEventListener("keyup", function() {
-
-  Array.prototype.forEach.call(els, function(el) {
-    if (el.textContent.trim().indexOf(search.value) > -1)
-      el.style.display = 'block';
-    else el.style.display = 'none';
+search.addEventListener("keyup", function () {
+  Array.prototype.forEach.call(els, function (el) {
+    if (el.textContent.trim().indexOf(search.value) > -1) {
+      el.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
   });
-
 });
