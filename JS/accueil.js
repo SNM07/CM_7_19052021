@@ -99,6 +99,8 @@ function generateHTMLForCards(recipe) {
   recipStepsText.innerHTML = recipe.description;
 
   recipCard.setAttribute("title", recipe.name);
+  recipCard.setAttribute("data-id", recipe.id);
+  recipCard.setAttribute("id", recipe.id);
   recipCard.setAttribute("data-app", recipe.appliance);
   recipCard.setAttribute("data-ust", recipe.ustensils);
   recipCard.style.display = "block";
@@ -348,7 +350,7 @@ const callback = function (mutationsList, observer) {
           text: mutation.addedNodes[0].innerText,
         });
         console.log(newTag);
-        displayCardTag();
+        displayCardTag(node);
         //dispMess();
       });
       mutation.removedNodes.forEach(function (node) {
@@ -358,36 +360,137 @@ const callback = function (mutationsList, observer) {
           1
         );
         console.log(newTag);
-        displayCardTag();
+        displayCardTag(node);
       });
 
-      function displayCardTag() {
-        var els = document.querySelectorAll(".recipeCard");
-        Array.prototype.forEach.call(els, function (el) {
-          let ingredient = el.children[1].children[1].children[0].innerText;
-          let appliance = el.dataset.app;
-          let ustensils = el.dataset.ust;
-          //if (el.textContent.trim().indexOf(search.value) > -1) {
-          newTag.forEach(function (tag) {
-            if (tag.class == "ing" && ingredient.includes(tag.text)) {
-              el.style.display = "block";
-            } else if (tag.class == "app" && appliance.includes(tag.text)) {
-              el.style.display = "block";
-            } else if (tag.class == "ust" && ustensils.includes(tag.text)) {
-              el.style.display = "block";
-            } else {
-              el.style.display = "none";
-            }
-          });
-          //}
-        });
-      }
+      //displayCardTag(el);
+
       displayMessage();
       return newTag;
     }
   }
 };
 
+/* function displayCardTag(el) {
+  var els = document.querySelectorAll(".recipeCard");
+  Array.prototype.forEach.call(els, function (el) {
+    let ingredient = el.children[1].children[1].children[0].innerText;
+    let appliance = el.dataset.app;
+    let ustensils = el.dataset.ust;
+    //if (el.textContent.trim().indexOf(search.value) > -1) {
+    newTag.forEach(function (tag) {
+      if (tag.class == "ing" && ingredient.includes(tag.text)) {
+        el.style.display = "block";
+      } else if (tag.class == "app" && appliance.includes(tag.text)) {
+        el.style.display = "block";
+      } else if (tag.class == "ust" && ustensils.includes(tag.text)) {
+        el.style.display = "block";
+      } else {
+        el.style.display = "none";
+      }
+    });
+    //}
+  });
+} */
+
+function displayCardTag(el) {
+  var els = document.querySelectorAll(".recipeCard");
+  let source = recipesSource;
+  //let sourceID = source.id;
+  //let elid = els.dataset.id;
+  //console.log(elid)
+
+  Array.prototype.forEach.call(els, function (el) {
+    //if(el.dataset.id == recipesSource.id)
+    //console.log(el.dataset.id)
+    let els2Arr = [...els];
+    //let srcID = [source.id];
+    //let elsID = parseInt(els2Arr.id.value);
+    //let str = source.toString();
+    //console.log(str)
+    //let elsid = els
+    /* const inter = source.filter(function ({ id }) {
+      //let idea = toString({ id });
+      //idea == els2Arr.id;
+      ({ id }) == els2Arr.id;
+      return;
+  });
+console.log(inter)
+ */
+    const intersection = source.filter(({ id }) => els2Arr.includes(id));
+    console.log(intersection);
+    /* 
+    function compare(data1, data2) {
+      let data2Arr = [...data2];
+      for(let item of data1){
+        if (data2Arr.find(item2 => item2.dataset.id === item.id))
+          console.log(item2)
+          return true
+      }
+      return false
+    }
+    console.log(compare(source,els));
+
+    objectsAreSame(source, els);
+    console.log(objectsAreSame)
+    function objectsAreSame(x, y) {
+      var objectsAreSame = true;
+      for(var id in x) {
+         if(x[id] !== y[dataset.id]) {
+            objectsAreSame = false;
+            break;
+         }
+      }
+      return objectsAreSame;
+   }
+ */
+    /* source.forEach(function (srcel) {
+      //els.forEach(function (elsid) {
+      console.log(srcel.id);
+      if (srcel.id == [...elsid].dataset.id) {
+        console.log("Match");
+      }
+
+      // })
+    }); */
+    /* let srcid = source.dataset.id;
+    console.log(srcid);
+    let ingredient = el.ingredients;
+    console.log(ingredients); */
+    
+    let ingredient = el.children[1].children[1].children[0].innerText;
+    let appliance = el.dataset.app;
+    let ustensils = el.dataset.ust;
+    let isOK = true;
+    //if (el.textContent.trim().indexOf(search.value) > -1) {
+    if (newTag.length > 0) {
+      newTag.every(function (tag) {
+        if (tag.class == "ing" && !ingredient.includes(tag.text)) {
+          isOK = false;
+          console.log(isOK);
+
+          return;
+        }
+        if (tag.class == "app" && !appliance.includes(tag.text)) {
+          isOK = false;
+          console.log(isOK);
+          return;
+        }
+        if (tag.class == "ust" && !ustensils.includes(tag.text)) {
+          isOK = false;
+          console.log(isOK);
+          return;
+        }
+      });
+    }
+    if (isOK == true) {
+      el.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
+    //}
+  });
+}
 // Create an observer instance linked to the callback function
 const observer = new MutationObserver(callback);
 
