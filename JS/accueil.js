@@ -367,7 +367,8 @@ const callback = function (mutationsList, observer) {
   }
 };
 
-var search = document.getElementById("site-search");
+// V 1 //
+/* var search = document.getElementById("site-search");
 search.addEventListener("keyup", function () {
   setTimeout(displayCardTag(), 300);
 });
@@ -378,9 +379,9 @@ function displayCardTag(el) {
   //let source = recipesSource;
 
   Array.prototype.forEach.call(els, function (el) {
-    /*let els2Arr = [...els];
-    const intersection = source.filter(({ id }) => els2Arr.includes(id));
-    console.log(intersection); */
+    //let els2Arr = [...els];
+    //const intersection = source.filter(({ id }) => els2Arr.includes(id));
+    //console.log(intersection); 
 
     let ingredient = el.children[1].children[1].children[0].innerText;
     let appliance = el.dataset.app;
@@ -391,18 +392,14 @@ function displayCardTag(el) {
       newTag.forEach(function (tag) {
         if (tag.class == "ing" && !ingredient.includes(tag.text)) {
           isOK = false;
-          console.log("INGREDIENT:", isOK);
-
           return;
         }
         if (tag.class == "app" && !appliance.includes(tag.text)) {
           isOK = false;
-          console.log(isOK);
           return;
         }
         if (tag.class == "ust" && !ustensils.includes(tag.text)) {
           isOK = false;
-          console.log(isOK);
           return;
         }
 
@@ -425,7 +422,73 @@ function displayCardTag(el) {
 
     if (isOK == true) {
       el.style.display = "block";
-      console.log("DISPLAY:", el);
+    } else {
+      el.style.display = "none";
+    }
+    displayMessage();
+  });
+}
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config); */
+
+// V 2 - FILTER //
+var search = document.getElementById("site-search");
+search.addEventListener("keyup", function () {
+  setTimeout(displayCardTag(), 300);
+});
+
+function displayCardTag(el) {
+  var els = document.querySelectorAll(".recipeCard");
+  var search = document.getElementById("site-search");
+  //let source = recipesSource;
+
+  [...els].filter( function (el) {
+    /*let els2Arr = [...els];
+    const intersection = source.filter(({ id }) => els2Arr.includes(id));
+    console.log(intersection); */
+
+    let ingredient = el.children[1].children[1].children[0].innerText;
+    let appliance = el.dataset.app;
+    let ustensils = el.dataset.ust;
+    let isOK = true;
+
+    if (newTag.length > 0) {
+      newTag.filter(function (tag) {
+        if (tag.class == "ing" && !ingredient.includes(tag.text)) {
+          isOK = false;
+          return;
+        }
+        if (tag.class == "app" && !appliance.includes(tag.text)) {
+          isOK = false;
+          return;
+        }
+        if (tag.class == "ust" && !ustensils.includes(tag.text)) {
+          isOK = false;
+          return;
+        }
+
+        if (
+          search.value.length >= 3 &&
+          el.textContent.trim().toLowerCase().indexOf(search.value) < 0
+        ) {
+          isOK = false;
+          return;
+        }
+      });
+    } else {
+      if (
+        search.value.length >= 3 &&
+        el.textContent.trim().toLowerCase().indexOf(search.value) < 0
+      ) {
+        isOK = false;
+      }
+    }
+
+    if (isOK == true) {
+      el.style.display = "block";
     } else {
       el.style.display = "none";
     }
