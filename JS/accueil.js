@@ -175,7 +175,7 @@ function generateMenuItems(arrayMenuList, listID, listClass) {
     const menuListItem = document.createElement("li");
     menuListItem.innerHTML = element;
     menuListItem.setAttribute("id", element);
-    menuListItem.classList.add(listClass);
+    menuListItem.classList.add(listClass, "menuList");
     menuList.appendChild(menuListItem);
   });
 }
@@ -244,6 +244,23 @@ function show() {
   }
 }
 
+// Close menu click outside
+document.addEventListener('click', function (event) {
+  const inputCont = document.getElementsByClassName("filterInput");
+  let c = event.target.classList;
+  if (c.contains("hidden") || c.contains("inputColor") || c.contains("arrowCont") || c.contains("arrowDown") || c.contains("arrowUP") || c.contains("menuList")) {
+    console.log("DO NOTHING")
+  }else{
+    [...menuLists].forEach(function (element) {
+      element.style.display = "none";
+    });
+    [...inputCont].forEach(function (element) {
+      element.style.borderRadius = "5px";
+      element.style.width = "100%";
+    });
+  }
+})
+
 /////////////////////////////////////////////////////////
 
 //Filtre des éléments en fonction de l'input
@@ -283,7 +300,13 @@ document.querySelectorAll(".hidden li").forEach((li) => {
   li.onclick = function () {
     if (tagListArray.indexOf(this.innerHTML) === -1) {
       tagListArray.push(this.innerHTML);
-      displayTag(this.innerHTML, this.className);
+      displayTag(this.innerHTML, this.classList[0]);
+
+      let inputs = document.getElementsByClassName("inputColor");
+      let inputsArr = [...inputs];
+      inputsArr.forEach(function (input) {
+        input.value = "";
+      });
     }
   };
 });
@@ -544,3 +567,6 @@ function displayMessage() {
 document.getElementById("warning").addEventListener("click", function () {
   document.getElementById("warning").classList.remove("wVisible");
 });
+
+
+//////////////////////////////////////////
