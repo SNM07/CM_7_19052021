@@ -248,6 +248,8 @@ function show() {
 document.addEventListener('click', function (event) {
   const inputCont = document.getElementsByClassName("filterInput");
   let c = event.target.classList;
+  let aDown = document.getElementsByClassName("arrowDown");
+  let aUp = document.getElementsByClassName("arrowUp");
   if (c.contains("hidden") || c.contains("inputColor") || c.contains("arrowCont") || c.contains("arrowDown") || c.contains("arrowUP") || c.contains("menuList")) {
     console.log("DO NOTHING")
   }else{
@@ -258,6 +260,13 @@ document.addEventListener('click', function (event) {
       element.style.borderRadius = "5px";
       element.style.width = "100%";
     });
+    [...aDown].forEach(function (element) {
+      element.style.display = "block";
+    });
+    [...aUp].forEach(function (element) {
+      element.style.display = "none";
+    });
+    
   }
 })
 
@@ -552,14 +561,17 @@ function displayMessage() {
   const messageWarning = document.getElementById("warningText");
   const messageWarningContainer = document.getElementById("warning");
   messageWarningContainer.classList.add("wVisible");
+  messageWarningContainer.style.backgroundColor = "lightsteelblue";
   messageWarning.innerText =
     numberOfVisibleDivs + " éléments correspondent à la recherche";
 
   if (numberOfHiddenDivs === 0) {
     messageWarningContainer.classList.remove("wVisible");
+    messageWarningContainer.style.backgroundColor = "lightsteelblue";
   }
   if (numberOfVisibleDivs === 0) {
     messageWarningContainer.classList.add("wVisible");
+    messageWarningContainer.style.backgroundColor = "lightsalmon";
     messageWarning.innerText = "Aucun élément ne correspond à la recherche";
   }
 }
