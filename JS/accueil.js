@@ -464,10 +464,10 @@ console.log(inter)
     let isOK = true;
     //if (el.textContent.trim().indexOf(search.value) > -1) {
     if (newTag.length > 0) {
-      newTag.every(function (tag) {
+      newTag.forEach(function (tag) {
         if (tag.class == "ing" && !ingredient.includes(tag.text)) {
           isOK = false;
-          console.log(isOK);
+          console.log("INGREDIENT:", isOK);
 
           return;
         }
@@ -485,6 +485,7 @@ console.log(inter)
     }
     if (isOK == true) {
       el.style.display = "block";
+      console.log("DISPLAY:", el)
     } else {
       el.style.display = "none";
     }
