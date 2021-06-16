@@ -365,7 +365,7 @@ const callback = function (mutationsList, observer) {
 
       //displayCardTag(el);
 
-      displayMessage();
+      //displayMessage();
       return newTag;
     }
   }
@@ -392,9 +392,19 @@ const callback = function (mutationsList, observer) {
     //}
   });
 } */
+var els = document.querySelectorAll(".recipeCard");
+var search = document.getElementById("site-search");
+search.addEventListener("keyup", function () {
+  setTimeout(
+    //Array.prototype.forEach.call(els, function () {
+    displayCardTag(),
+    300
+  );
+});
 
 function displayCardTag(el) {
   var els = document.querySelectorAll(".recipeCard");
+  var search = document.getElementById("site-search");
   let source = recipesSource;
   //let sourceID = source.id;
   //let elid = els.dataset.id;
@@ -457,7 +467,21 @@ console.log(inter)
     console.log(srcid);
     let ingredient = el.ingredients;
     console.log(ingredients); */
-    
+
+    //var search = document.getElementById("site-search");
+    //var els = document.querySelectorAll(".recipeCard");
+
+    /* search.addEventListener("keyup", function () {
+      Array.prototype.forEach.call(els, function (el) {
+        if (el.textContent.trim().indexOf(search.value) > -1) {
+          el.style.display = "block";
+        } else {
+          el.style.display = "none";
+        }
+        displayMessage();
+      });
+    }); */
+
     let ingredient = el.children[1].children[1].children[0].innerText;
     let appliance = el.dataset.app;
     let ustensils = el.dataset.ust;
@@ -481,15 +505,32 @@ console.log(inter)
           console.log(isOK);
           return;
         }
+
+        if (
+          search.value.length >= 3 &&
+          el.textContent.trim().toLowerCase().indexOf(search.value) < 0
+        ) {
+          isOK = false;
+          return;
+        }
       });
+    } else {
+      if (
+        search.value.length >= 3 &&
+        el.textContent.trim().toLowerCase().indexOf(search.value) < 0
+      ) {
+        isOK = false;
+      }
     }
+
     if (isOK == true) {
       el.style.display = "block";
-      console.log("DISPLAY:", el)
+      console.log("DISPLAY:", el);
     } else {
       el.style.display = "none";
     }
     //}
+    displayMessage();
   });
 }
 // Create an observer instance linked to the callback function
@@ -500,7 +541,7 @@ observer.observe(targetNode, config);
 
 //RECHERCHE AVEC INPUT
 
-var search = document.getElementById("site-search");
+/* var search = document.getElementById("site-search");
 var els = document.querySelectorAll(".recipeCard");
 
 search.addEventListener("keyup", function () {
@@ -512,7 +553,7 @@ search.addEventListener("keyup", function () {
     }
     displayMessage();
   });
-});
+}); */
 
 //DISPLAY MESSAGE
 
