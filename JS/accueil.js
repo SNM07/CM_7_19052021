@@ -311,6 +311,11 @@ document.querySelectorAll(".hidden li").forEach((li) => {
       tagListArray.push(this.innerHTML);
       displayTag(this.innerHTML, this.classList[0]);
 
+      const menuLists = document.getElementsByClassName("menuList");
+      [...menuLists].forEach(function (element) {
+        element.style.display = "block";
+      });
+
       let inputs = document.getElementsByClassName("inputColor");
       let inputsArr = [...inputs];
       inputsArr.forEach(function (input) {
