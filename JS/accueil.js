@@ -437,7 +437,7 @@ function displayCardTag(el) {
 
         if (
           search.value.length >= 3 &&
-          el.textContent.trim().toLowerCase().indexOf(search.value) < 0
+          el.textContent.trim().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").indexOf(search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")) < 0
         ) {
           isOK = false;
           return;
@@ -446,7 +446,7 @@ function displayCardTag(el) {
     } else {
       if (
         search.value.length >= 3 &&
-        el.textContent.trim().toLowerCase().indexOf(search.value) < 0
+        el.textContent.trim().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").indexOf(search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")) < 0
       ) {
         isOK = false;
       }
