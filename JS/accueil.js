@@ -258,7 +258,6 @@ document.addEventListener("click", function (event) {
     c.contains("arrowUP") ||
     c.contains("menuList")
   ) {
-    console.log("DO NOTHING");
   } else {
     [...menuLists].forEach(function (element) {
       element.style.display = "none";
@@ -414,21 +413,17 @@ const callback = function (mutationsList, observer) {
   for (const mutation of mutationsList) {
     if (mutation.type === "childList") {
       mutation.addedNodes.forEach(function (node) {
-        console.log("The added node", node);
         newTag.push({
           class: mutation.addedNodes[0].classList[1],
           text: mutation.addedNodes[0].innerText,
         });
-        console.log(newTag);
         displayCardTag(node);
       });
       mutation.removedNodes.forEach(function (node) {
-        console.log("The removed node", node);
         newTag.splice(
           newTag.findIndex((el) => el.id === node.innerText),
           1
         );
-        console.log(newTag);
         displayCardTag(node);
       });
 
@@ -446,12 +441,8 @@ search.addEventListener("keyup", function () {
 function displayCardTag(el) {
   var els = document.querySelectorAll(".recipeCard");
   var search = document.getElementById("site-search");
-  //let source = recipesSource;
 
   Array.prototype.forEach.call(els, function (el) {
-    //let els2Arr = [...els];
-    //const intersection = source.filter(({ id }) => els2Arr.includes(id));
-    //console.log(intersection); 
 
     let ingredient = el.children[1].children[1].children[0].innerText;
     let appliance = el.dataset.app;
@@ -497,6 +488,7 @@ function displayCardTag(el) {
     }
     displayMessage();
   });
+  removeMenuItems();
 }
 // Create an observer instance linked to the callback function
 const observer = new MutationObserver(callback);
@@ -513,12 +505,8 @@ search.addEventListener("keyup", function () {
 function displayCardTag(el) {
   var els = document.querySelectorAll(".recipeCard");
   var search = document.getElementById("site-search");
-  //let source = recipesSource;
 
   [...els].filter(function (el) {
-    /*let els2Arr = [...els];
-    const intersection = source.filter(({ id }) => els2Arr.includes(id));
-    console.log(intersection); */
 
     let ingredient = el.children[1].children[1].children[0].innerText;
     let appliance = el.dataset.app;
@@ -593,7 +581,6 @@ function removeMenuItems() {
   let dispC = document.querySelectorAll(
     '.recipeCard:not([style*="display: none;"])'
   );
-  console.log(dispC);
   let str;
   let result = [];
   dispC.forEach(function (el) {
@@ -632,9 +619,6 @@ function displayMessage() {
   //and use length to count
   var numberOfHiddenDivs = displayNone.length;
   var numberOfVisibleDivs = displayShow.length;
-  console.log(
-    "hidden:" + numberOfHiddenDivs + ", visible:" + numberOfVisibleDivs
-  );
 
   const messageWarning = document.getElementById("warningText");
   const messageWarningContainer = document.getElementById("warning");
