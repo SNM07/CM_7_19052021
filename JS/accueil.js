@@ -578,6 +578,7 @@ function displayCardTag(el) {
     }
     displayMessage();
   });
+  removeMenuItems();
 }
 // Create an observer instance linked to the callback function
 const observer = new MutationObserver(callback);
@@ -585,6 +586,31 @@ const observer = new MutationObserver(callback);
 // Start observing the target node for configured mutations
 observer.observe(targetNode, config);
 
+//Remove items from menu list after tag choice
+function removeMenuItems() {
+  let allMenus = document.querySelectorAll(".menuList");
+
+  let dispC = document.querySelectorAll(
+    '.recipeCard:not([style*="display: none;"])'
+  );
+  console.log(dispC);
+  let str;
+  let result = [];
+  dispC.forEach(function (el) {
+    str = el.textContent;
+    result.push(str);
+  });
+
+  let resultString = result.join();
+
+  [...allMenus].forEach(function (menuel) {
+    if (!resultString.includes(menuel.textContent)) {
+      menuel.style.display = "none";
+    } else {
+      menuel.style.display = "block";
+    }
+  });
+}
 ///////////////////////////////////////
 
 //DISPLAY MESSAGE
