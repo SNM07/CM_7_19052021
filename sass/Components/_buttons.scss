@@ -115,6 +115,11 @@
     list-style: none;
     width: 28%;
     padding: .3rem;
+    display: block;
+  }
+  & .noTag{
+    display: none;
+    width: 100%;
   }
 }
 }

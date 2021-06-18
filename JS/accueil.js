@@ -292,11 +292,41 @@ function menuFilter(event) {
     a = li[i];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+      li[i].style.display = "block";
     } else {
       li[i].style.display = "none";
     }
   }
+  
+  isFound();
+  function isFound() {
+    let noTag = document.getElementsByClassName("noTag");
+    let found = true;
+    [...li].forEach(function (el) {
+      let disp = el.style.display;
+      let dispVal = "block";
+      if (disp == dispVal) {
+        found = false;
+        return;
+      } else {
+        found = true;
+        return;
+      }
+    });
+    if (found == true) {
+      [...noTag].forEach(function (el) {
+        el.style.display = "none";
+      });
+    } else {
+      [...noTag].forEach(function (el) {
+        el.style.display = "block";
+      });    }
+  }
+  /* [...li].forEach(function (el) {
+    if (el.find(":visible").length == 0) {
+      document.getElementsByClassName("noTag").style.display = "block";
+    }
+  }); */
 }
 
 /////////////////////////////////////////////////
@@ -577,7 +607,7 @@ function displayMessage() {
   if (numberOfVisibleDivs === 0) {
     messageWarningContainer.classList.add("wVisible");
     messageWarningContainer.style.backgroundColor = "lightsalmon";
-    messageWarning.innerText = "Aucun élément ne correspond à la recherche";
+    messageWarning.innerText = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
   }
 }
 
