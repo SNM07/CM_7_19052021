@@ -245,14 +245,21 @@ function show() {
 }
 
 // Close menu click outside
-document.addEventListener('click', function (event) {
+document.addEventListener("click", function (event) {
   const inputCont = document.getElementsByClassName("filterInput");
   let c = event.target.classList;
   let aDown = document.getElementsByClassName("arrowDown");
   let aUp = document.getElementsByClassName("arrowUp");
-  if (c.contains("hidden") || c.contains("inputColor") || c.contains("arrowCont") || c.contains("arrowDown") || c.contains("arrowUP") || c.contains("menuList")) {
-    console.log("DO NOTHING")
-  }else{
+  if (
+    c.contains("hidden") ||
+    c.contains("inputColor") ||
+    c.contains("arrowCont") ||
+    c.contains("arrowDown") ||
+    c.contains("arrowUP") ||
+    c.contains("menuList")
+  ) {
+    console.log("DO NOTHING");
+  } else {
     [...menuLists].forEach(function (element) {
       element.style.display = "none";
     });
@@ -266,9 +273,8 @@ document.addEventListener('click', function (event) {
     [...aUp].forEach(function (element) {
       element.style.display = "none";
     });
-    
   }
-})
+});
 
 /////////////////////////////////////////////////////////
 
@@ -287,7 +293,7 @@ function menuFilter(event) {
   input = event.currentTarget;
   ul = input.parentNode.lastElementChild;
   filter = input.value.toUpperCase();
-  li = ul.getElementsByTagName("li");
+  li = ul.getElementsByClassName("menuList");
   for (i = 0; i < li.length; i++) {
     a = li[i];
     txtValue = a.textContent || a.innerText;
@@ -297,18 +303,14 @@ function menuFilter(event) {
       li[i].style.display = "none";
     }
   }
-  
+
   isFound();
   function isFound() {
     let noTag = document.getElementsByClassName("noTag");
-    let found = true;
+    let found = false;
     [...li].forEach(function (el) {
       let disp = el.style.display;
-      let dispVal = "block";
-      if (disp == dispVal) {
-        found = false;
-        return;
-      } else {
+      if (disp == "block") {
         found = true;
         return;
       }
@@ -320,7 +322,8 @@ function menuFilter(event) {
     } else {
       [...noTag].forEach(function (el) {
         el.style.display = "block";
-      });    }
+      });
+    }
   }
   /* [...li].forEach(function (el) {
     if (el.find(":visible").length == 0) {
@@ -335,7 +338,7 @@ function menuFilter(event) {
 
 const tagListArray = [];
 
-document.querySelectorAll(".hidden li").forEach((li) => {
+document.querySelectorAll(".menuList").forEach((li) => {
   li.onclick = function () {
     if (tagListArray.indexOf(this.innerHTML) === -1) {
       tagListArray.push(this.innerHTML);
@@ -512,7 +515,7 @@ function displayCardTag(el) {
   var search = document.getElementById("site-search");
   //let source = recipesSource;
 
-  [...els].filter( function (el) {
+  [...els].filter(function (el) {
     /*let els2Arr = [...els];
     const intersection = source.filter(({ id }) => els2Arr.includes(id));
     console.log(intersection); */
@@ -539,7 +542,14 @@ function displayCardTag(el) {
 
         if (
           search.value.length >= 3 &&
-          el.textContent.trim().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").indexOf(search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")) < 0
+          el.textContent
+            .trim()
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "")
+            .indexOf(
+              search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+            ) < 0
         ) {
           isOK = false;
           return;
@@ -548,7 +558,14 @@ function displayCardTag(el) {
     } else {
       if (
         search.value.length >= 3 &&
-        el.textContent.trim().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").indexOf(search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")) < 0
+        el.textContent
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/\p{Diacritic}/gu, "")
+          .indexOf(
+            search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+          ) < 0
       ) {
         isOK = false;
       }
@@ -607,7 +624,8 @@ function displayMessage() {
   if (numberOfVisibleDivs === 0) {
     messageWarningContainer.classList.add("wVisible");
     messageWarningContainer.style.backgroundColor = "lightsalmon";
-    messageWarning.innerText = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+    messageWarning.innerText =
+      "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
   }
 }
 
@@ -615,5 +633,22 @@ document.getElementById("warning").addEventListener("click", function () {
   document.getElementById("warning").classList.remove("wVisible");
 });
 
-
 //////////////////////////////////////////
+
+// On no menu item found
+let noTag = document.querySelectorAll(".noTag");
+noTag.forEach((el) =>
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    el.style.display = "none";
+    let inputs = document.getElementsByClassName("inputColor");
+    let inputsArr = [...inputs];
+    inputsArr.forEach(function (input) {
+      input.value = "";
+    });
+    const menuLists = document.getElementsByClassName("menuList");
+    [...menuLists].forEach(function (element) {
+      element.style.display = "block";
+    });
+  })
+);
