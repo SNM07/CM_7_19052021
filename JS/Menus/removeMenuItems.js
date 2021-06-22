@@ -10,7 +10,10 @@ export default function removeMenuItems() {
     let result = [];
     dispC.forEach(function (el) {
       str = el.textContent;
-      result.push(str);
+      let app = el.dataset.app;
+      let ust = el.dataset.ust;
+      let allText = str + "," + app + "," + ust;
+      result.push(allText);
     });
   
     let resultString = result.join();
