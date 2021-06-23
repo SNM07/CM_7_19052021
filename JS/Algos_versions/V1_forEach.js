@@ -5,7 +5,6 @@ export default function displayCardTag(el) {
   var search = document.getElementById("site-search");
 
   Array.prototype.forEach.call(els, function (el) {
-
     let ingredient = el.children[1].children[1].children[0].innerText;
     let appliance = el.dataset.app;
     let ustensils = el.dataset.ust;
@@ -28,7 +27,14 @@ export default function displayCardTag(el) {
 
         if (
           search.value.length >= 3 &&
-          el.textContent.trim().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").indexOf(search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")) < 0
+          el.textContent
+            .trim()
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "")
+            .indexOf(
+              search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+            ) < 0
         ) {
           isOK = false;
           return;
@@ -37,7 +43,14 @@ export default function displayCardTag(el) {
     } else {
       if (
         search.value.length >= 3 &&
-        el.textContent.trim().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").indexOf(search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")) < 0
+        el.textContent
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/\p{Diacritic}/gu, "")
+          .indexOf(
+            search.value.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+          ) < 0
       ) {
         isOK = false;
       }

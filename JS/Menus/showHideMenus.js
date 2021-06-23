@@ -1,4 +1,4 @@
-//display menus
+// Display menus
 
 export function showMenus() {
   const hidden = this.parentNode.nextElementSibling;
@@ -58,6 +58,7 @@ export function hideMenus(event) {
   let c = event.target.classList;
   let aDown = document.getElementsByClassName("arrowDown");
   let aUp = document.getElementsByClassName("arrowUp");
+  let x = window.matchMedia("(max-width: 768px)");
   if (
     c.contains("hidden") ||
     c.contains("inputColor") ||
@@ -72,7 +73,11 @@ export function hideMenus(event) {
     });
     [...inputCont].forEach(function (element) {
       element.style.borderRadius = "5px";
-      element.style.width = "100%";
+      if (x.matches) {
+        element.style.width = "100%";
+      } else {
+        element.style.width = "auto";
+      }
     });
     [...aDown].forEach(function (element) {
       element.style.display = "block";

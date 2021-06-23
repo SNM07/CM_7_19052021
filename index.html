@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les petits plats</title>
-    <link rel="icon" type="image/png" href="./images/Les-petits-plats-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./images/Les-petits-plats-icon.png"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./JS/accueil.js" type="module"></script>
     <script src="./data/recipes.js" type="module"></script>
@@ -39,21 +43,26 @@
           </button>
         </form>
       </div>
-      <div id="activeFiltersContainer">
-        
-      </div>
+      <div id="activeFiltersContainer"></div>
       <nav id="searchFiltersContainer">
         <div id="searchFilters">
           <div class="filterInput" id="ingredients">
-            <input type="text" placeholder="Ingrédients" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingrédients'" class="inputColor" id="ingSearch"/>
+            <input
+              type="text"
+              placeholder="Ingrédients"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Ingrédients'"
+              class="inputColor"
+              id="ingSearch"
+            />
             <label
               id="inputTrigger--name"
               class="inputTrigger"
               data-status="close"
             >
               <div class="arrowCont" id="arrowContIng">
-              <i class="fas fa-chevron-down arrowDown"></i>
-              <i class="fas fa-chevron-up arrowUp"></i>
+                <i class="fas fa-chevron-down arrowDown"></i>
+                <i class="fas fa-chevron-up arrowUp"></i>
               </div>
             </label>
             <ul id="ingList" class="hidden">
@@ -61,15 +70,22 @@
             </ul>
           </div>
           <div class="filterInput" id="appareil">
-            <input type="text" placeholder="Appareil" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Appareil'" class="inputColor" id="appSearch"/>
+            <input
+              type="text"
+              placeholder="Appareil"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Appareil'"
+              class="inputColor"
+              id="appSearch"
+            />
             <label
               id="inputTrigger--name"
               class="inputTrigger"
               data-status="close"
             >
               <div class="arrowCont" id="arrowContApp">
-              <i class="fas fa-chevron-down arrowDown"></i>
-              <i class="fas fa-chevron-up arrowUp"></i>
+                <i class="fas fa-chevron-down arrowDown"></i>
+                <i class="fas fa-chevron-up arrowUp"></i>
               </div>
             </label>
             <ul id="appList" class="hidden">
@@ -77,15 +93,22 @@
             </ul>
           </div>
           <div class="filterInput" id="ustensiles">
-            <input type="text" placeholder="Ustensiles" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ustensiles'" class="inputColor" id="ustSearch"/>
+            <input
+              type="text"
+              placeholder="Ustensiles"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Ustensiles'"
+              class="inputColor"
+              id="ustSearch"
+            />
             <label
               id="inputTrigger--name"
               class="inputTrigger"
               data-status="close"
             >
               <div class="arrowCont" id="arrowContUst">
-              <i class="fas fa-chevron-down arrowDown"></i>
-              <i class="fas fa-chevron-up arrowUp"></i>
+                <i class="fas fa-chevron-down arrowDown"></i>
+                <i class="fas fa-chevron-up arrowUp"></i>
               </div>
             </label>
             <ul id="ustList" class="hidden">
@@ -94,9 +117,7 @@
           </div>
         </div>
       </nav>
-      <section id="cardsContainer">
-        
-      </section>
+      <section id="cardsContainer"></section>
     </main>
   </body>
 </html>

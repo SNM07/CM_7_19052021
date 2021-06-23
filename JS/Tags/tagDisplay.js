@@ -3,27 +3,28 @@
 const tagListArray = [];
 
 export function tagSelect() {
-    document.querySelectorAll(".menuList").forEach((li) => {
-        li.onclick = function () {
-            if (tagListArray.indexOf(this.innerHTML) === -1) {
-                tagListArray.push(this.innerHTML);
-                displayTag(this.innerHTML, this.classList[0]);
+  document.querySelectorAll(".menuList").forEach((li) => {
+    li.onclick = function () {
+      if (tagListArray.indexOf(this.innerHTML) === -1) {
+        tagListArray.push(this.innerHTML);
+        displayTag(this.innerHTML, this.classList[0]);
 
-                const menuLists = document.getElementsByClassName("menuList");
-                [...menuLists].forEach(function (element) {
-                    element.style.display = "block";
-                });
+        const menuLists = document.getElementsByClassName("menuList");
+        [...menuLists].forEach(function (element) {
+          element.style.display = "block";
+        });
 
-                let inputs = document.getElementsByClassName("inputColor");
-                let inputsArr = [...inputs];
-                inputsArr.forEach(function (input) {
-                    input.value = "";
-                });
-            }
-        };
-    });
+        let inputs = document.getElementsByClassName("inputColor");
+        let inputsArr = [...inputs];
+        inputsArr.forEach(function (input) {
+          input.value = "";
+        });
+      }
+    };
+  });
 }
 
+// Generate tags
 function displayTag(textValue, tagType) {
   const container = document.getElementById("activeFiltersContainer");
   let tag = document.createElement("div");
@@ -50,6 +51,7 @@ function displayTag(textValue, tagType) {
   container.appendChild(tag);
 }
 
+// Remove tags
 function remove(e) {
   let value = e.target.innerText;
   e.target.remove();

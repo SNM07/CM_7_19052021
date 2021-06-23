@@ -4,33 +4,31 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  @include medium-only{
+  @include medium-only {
     width: 40%;
   }
-  @include large-only{
+  @include large-only {
     width: 30%;
   }
   & .imageContainer {
-    //width: 33vw;
     height: 26vw;
     background-color: lightslategray;
     border-radius: 10px 10px 0 0;
-    @include medium-only{
+    @include medium-only {
       height: 20vw;
     }
-    @include large-only{
+    @include large-only {
       height: 14vw;
     }
   }
   & .recipeInfos {
-    //width: 33vw;
     height: 30vw;
     background-color: lightgray;
     border-radius: 0 0 10px 10px;
-    @include medium-only{
+    @include medium-only {
       height: 24vw;
     }
-    @include large-only{
+    @include large-only {
       height: 18vw;
     }
     & .recipeHeading {
@@ -40,10 +38,10 @@
       margin-bottom: 1vw;
       & .recipeName {
         font-size: 3.2vw;
-        @include medium-only{
+        @include medium-only {
           font-size: 2vw;
-                }
-        @include large-only{
+        }
+        @include large-only {
           font-size: 1.6vw;
         }
       }
@@ -54,11 +52,11 @@
         align-items: center;
         justify-content: space-between;
         flex-direction: row;
-        gap: .4rem;
-        @include medium-only{
+        gap: 0.4rem;
+        @include medium-only {
           font-size: 2vw;
-                }
-        @include large-only{
+        }
+        @include large-only {
           font-size: 1.6vw;
         }
       }
@@ -69,30 +67,30 @@
       height: 17vw;
       overflow: hidden;
       position: relative;
-      padding: 0 1rem .5rem 1rem;
-      @include medium-only{
+      padding: 0 1rem 0.5rem 1rem;
+      @include medium-only {
         height: 16vw;
         font-size: 1.4vw;
       }
-      @include large-only{
+      @include large-only {
         height: 10vw;
         font-size: 1vw;
       }
-      &:before{
+      &:before {
         content: "";
         position: absolute;
         width: 90%;
         height: 100%;
-      background:linear-gradient(transparent 0vw,lightgray 15vw);
-      @include medium-only{
-        background:linear-gradient(transparent 10vw,lightgray 15vw);
-      }
-      @include large-only{
-        background:linear-gradient(transparent 6vw,lightgray 9vw);
-      }
-      @media screen and (max-width: 500px) {
-        height: 90%;
-      }
+        background: linear-gradient(transparent 0vw, lightgray 15vw);
+        @include medium-only {
+          background: linear-gradient(transparent 10vw, lightgray 15vw);
+        }
+        @include large-only {
+          background: linear-gradient(transparent 6vw, lightgray 9vw);
+        }
+        @media screen and (max-width: 500px) {
+          height: 90%;
+        }
       }
       & .recipeIng {
         display: flex;
@@ -100,7 +98,7 @@
         overflow: hidden;
         width: 45%;
         padding-right: 5%;
-        
+
         & .recipeIngName {
           font-weight: bold;
           & .recipeIngQuantity {
@@ -113,7 +111,7 @@
       }
       & .recipeSteps {
         width: 50%;
-        overflow:hidden;
+        overflow: hidden;
       }
     }
   }

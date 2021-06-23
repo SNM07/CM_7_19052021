@@ -36,6 +36,7 @@ export function createMenus(recipesSource) {
   generateMenuItems(menuUst, ustID, ustClass);
 }
 
+// Generate lists and alphabetical arrangement of items
 function generateMenuList(arrayMenu, item) {
   if (arrayMenu.indexOf(item) === -1) {
     arrayMenu.push(item);
@@ -45,6 +46,7 @@ function generateMenuList(arrayMenu, item) {
   );
 }
 
+// Generate HTML for lists items
 function generateMenuItems(arrayMenuList, listID, listClass) {
   const menuList = document.getElementById(listID);
   arrayMenuList.forEach(function (element) {

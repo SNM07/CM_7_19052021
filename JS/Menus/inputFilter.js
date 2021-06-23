@@ -1,6 +1,4 @@
-//Filtre des éléments en fonction de l'input
-
-
+//Filtre d'affichage des items en fonction de l'input
 
 export default function menuFilter(event) {
   var input, filter, ul, li, a, i, txtValue;

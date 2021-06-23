@@ -1,11 +1,14 @@
 // V 2 - FILTER //
 
-export default function displayCardTag(newTag, displayMessage, removeMenuItems) {
-    var els = document.querySelectorAll(".recipeCard");
+export default function displayCardTag(
+  newTag,
+  displayMessage,
+  removeMenuItems
+) {
+  var els = document.querySelectorAll(".recipeCard");
   var search = document.getElementById("site-search");
 
   [...els].filter(function (el) {
-
     let ingredient = el.children[1].children[1].children[0].innerText;
     let appliance = el.dataset.app;
     let ustensils = el.dataset.ust;
@@ -66,4 +69,3 @@ export default function displayCardTag(newTag, displayMessage, removeMenuItems) 
   });
   removeMenuItems();
 }
-
