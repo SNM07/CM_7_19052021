@@ -3,22 +3,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2vw;
-    & #logo {
-      width: 25vw;
+    margin: 4vw;
+    @include medium-only {
+      margin: 2vw;
     }
-  }
-  & #warning{
-      width: 90vw;
-      display: flex;
-      background-color: lightsteelblue;
-      color: darkslategray;
-      justify-content: space-between;
-      align-items: center;
-      margin: 2rem auto 1rem auto;
-      padding: 1rem;
-      height: 2.5rem;
-      border-radius: 5px;
+    & #logo {
+      width: 50vw;
+      @include medium-only {
+        width: 25vw;
+      }
+    }
   }
   & #searchBarContainer {
     width: 90vw;
@@ -34,10 +28,7 @@
       border-radius: 5px 0 0 5px;
       font-size: 1.2rem;
       padding-left: 1rem;
-      
-      }
-      
-    
+    }
     & .searchButton {
       background-color: lightgray;
       border: none;
@@ -48,45 +39,41 @@
       }
     }
   }
-  & #activeFiltersContainer{
-      display:flex;
-      gap: 1rem;
-      width: 90vw;
-      margin: 1rem auto;
-      & .activeFilter{
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: .5rem 1rem;
-          border-radius: 5px;
-          color: white;
-          &.ing{
-            background-color: $color-ing;  
-          }
-          &.app{
-            background-color: $color-app;  
-          }
-          &.ust{
-            background-color: $color-ust;  
-          }
-          & .activeFilterText{
-              padding-right: 1rem;
-          }
-      }
-  }
-  & #searchFiltersContainer{
+  & #activeFiltersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     width: 90vw;
-    margin: 2vw auto 2vw auto;
-  & #searchFilters{
+    margin: 1rem auto;
+    @include medium-only {
+      gap: 1rem;
+    }
+  }
+  & #searchFiltersContainer {
+    width: 90vw;
+    margin: 2vw auto 6vw auto;
+    @include medium-only {
+      margin: 2vw auto 2vw auto;
+    }
+    & #searchFilters {
       display: flex;
       justify-content: flex-start;
+      flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
+      @include medium-only {
+        flex-direction: row;
+        gap: 1.5rem;
+      }
+    }
   }
-}
-  & #cardsContainer{
-      width: 90%;
-      margin: auto;
+  & #cardsContainer {
+    width: 91%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2vw;
   }
 }
 
