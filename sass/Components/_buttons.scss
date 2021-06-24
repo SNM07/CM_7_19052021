@@ -1,29 +1,61 @@
+//Menus inputs/lists
 .filterInput {
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  @include medium-only {
+    width: auto;
+  }
   &#ingredients {
     background-color: $color-ing;
+    &:hover {
+      background-color: darken($color-ing, 10%);
+    }
   }
   &#appareil {
     background-color: $color-app;
+    &:hover {
+      background-color: darken($color-app, 10%);
+    }
   }
   &#ustensiles {
     background-color: $color-ust;
+    &:hover {
+      background-color: darken($color-ust, 10%);
+    }
   }
   &#ingredients .inputColor {
     background-color: $color-ing;
+    &:hover {
+      background-color: darken($color-ing, 10%);
+    }
   }
   &#appareil .inputColor {
     background-color: $color-app;
+    &:hover {
+      background-color: darken($color-app, 10%);
+    }
   }
   &#ustensiles .inputColor {
     background-color: $color-ust;
+    &:hover {
+      background-color: darken($color-ust, 10%);
+    }
+  }
+  & .inputTrigger {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
   }
   & .inputColor {
-    border-radius: 5px 0 0 0;
+    border-radius: 5px 0 0 5px;
     border: none;
     height: 4rem;
     color: white;
-    padding-left: 1rem;
+    width: 80%;
     font-size: 1.2rem;
     &::placeholder {
       color: white;
@@ -31,15 +63,127 @@
       padding: 1rem;
     }
   }
-  & .hiddenArrow {
-    display: none;
+  & .arrowCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+
+    & .arrowUp {
+      color: white;
+      display: none;
+    }
+    & .arrowDown {
+      color: white;
+      cursor: pointer;
+    }
   }
-  & .fas {
-    color: white;
+  & ul {
+    display: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    border-radius: 0 0 5px 5px;
+    top: 4rem;
+    padding: 0.5rem;
+    z-index: 5;
+    &#ingList {
+      background-color: $color-ing;
+      & li:hover {
+        background-color: darken($color-ing, 10%);
+      }
+    }
+    &#appList {
+      background-color: $color-app;
+      & li:hover {
+        background-color: darken($color-app, 10%);
+      }
+    }
+    &#ustList {
+      background-color: $color-ust;
+      & li:hover {
+        background-color: darken($color-ust, 10%);
+      }
+    }
+    & li {
+      color: white;
+      list-style: none;
+      width: 28%;
+      padding: 0.3rem;
+      display: block;
+    }
+    & .noTag {
+      display: none;
+      width: 100%;
+    }
+  }
+}
+
+//Active filters buttons
+.activeFilter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  &.ing {
+    background-color: $color-ing;
+    &:hover {
+      background-color: darken($color-ing, 10%);
+    }
+  }
+  &.app {
+    background-color: $color-app;
+    &:hover {
+      background-color: darken($color-app, 10%);
+    }
+  }
+  &.ust {
+    background-color: $color-ust;
+    &:hover {
+      background-color: darken($color-ust, 10%);
+    }
+  }
+  & .activeFilterText {
     padding-right: 1rem;
   }
-  & li {
-    color: white;
-    list-style: none;
+  & .fa-times-circle {
+    pointer-events: none;
+  }
+}
+
+//Warning message
+#warning {
+  width: 90vw;
+  display: flex;
+  background-color: lightsteelblue;
+  color: darkslategray;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto 1rem auto;
+  padding: 1rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  transition: all 300ms ease;
+  cursor: pointer;
+  &.wHidden {
+    visibility: hidden;
+    height: 0;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  &.wVisible {
+    visibility: visible;
+    opacity: 100%;
+    height: 100%;
+    transform: scaleY(1);
+  }
+  & #warningText {
+    padding-right: 1.5rem;
   }
 }
