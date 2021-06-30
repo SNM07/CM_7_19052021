@@ -1,7 +1,7 @@
 "use strict";
 
-//import displayCardTag from "./Algos_versions/V1_forEach.js";
-import displayCardTag from "./Algos_versions/V2_filter.js";
+import displayCardTag from "./Algos_versions/V1_forEach.js";
+//import displayCardTag from "./Algos_versions/V2_filter.js";
 
 import generateHTMLForCards from "./Cards/generateHTMLforCards.js";
 import displayMessage from "./Warning_Message/displayMessage.js";
