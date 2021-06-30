@@ -1,6 +1,11 @@
 // V 1 - forEach //
 
-export default function displayCardTag(el) {
+export default function displayCardTag(
+  newTag,
+  displayMessage,
+  removeMenuItems
+) {
+  performance.mark("start");
   var els = document.querySelectorAll(".recipeCard");
   var search = document.getElementById("site-search");
 
@@ -63,5 +68,9 @@ export default function displayCardTag(el) {
     }
     displayMessage();
   });
+  performance.mark("end");
+  performance.measure("difference", "start", "end");
+  console.log(performance.getEntriesByType("measure")[0].duration);
+  performance.clearMeasures();
   removeMenuItems();
 }
